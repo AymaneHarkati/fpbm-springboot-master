@@ -18,6 +18,7 @@ public class Section {
     @Id
     @Column(name = "sectionId")
     private int id;
+
     @OneToMany(mappedBy = "idsection")
     private List<ProfesseurHasModule> professeurHasModules;
 

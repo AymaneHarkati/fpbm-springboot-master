@@ -5,10 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity(name = "professeur_has_module")
 @Data
@@ -28,5 +26,14 @@ public class ProfesseurHasModule {
     private CoursTdTp idcoursTdTp;
     @ManyToOne
     private Section idsection;
+
+    @OneToMany(mappedBy = "profHasModule")
+    private Collection<Examen> examen;
+
+    @OneToMany(mappedBy = "professeurHasModule_id")
+    private Collection<ProfesseurHasModuleHasEtudiant> professeurHasModuleHasEtudiants;
+
+
+
 
 }

@@ -12,6 +12,7 @@ public class Ced {
     private int idCed;
     @OneToMany(mappedBy = "ced")
     private List<Labo> labo;
+
     @OneToMany(mappedBy = "idCed")
     private  List<Equipe> equipes;
 }

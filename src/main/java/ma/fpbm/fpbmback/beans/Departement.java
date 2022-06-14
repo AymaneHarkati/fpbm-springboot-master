@@ -1,12 +1,15 @@
 package ma.fpbm.fpbmback.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import java.util.Collection;
 import java.util.Objects;
 
-@Entity
+@Entity @Data
+@NoArgsConstructor @AllArgsConstructor
 public class Departement {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,6 +18,8 @@ public class Departement {
     private String code;
     private String name;
 
+    @OneToMany(mappedBy = "depart_filliere")
+    private Collection<Filiere> filliere;
 
     public Long getId() {
         return id;
