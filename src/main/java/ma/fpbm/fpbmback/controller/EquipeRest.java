@@ -23,7 +23,7 @@ public class EquipeRest {
     }
 
     @PostMapping("/equipe/saveEquipe")
-    public Equipe saveEquipe(Equipe equipe){
+    public Equipe saveEquipe(@RequestBody Equipe equipe){
         return equipeServices.saveEquipe(equipe);
     }
 
