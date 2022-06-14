@@ -1,13 +1,17 @@
 package ma.fpbm.fpbmback.beans;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Entity
+import javax.persistence.*;
+
+@Entity @Data
+@AllArgsConstructor @NoArgsConstructor
 public class Equipe {
     @Id
-    private int idEquipe;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEquipe;
     @ManyToOne
     private Ced idCed;
 }
