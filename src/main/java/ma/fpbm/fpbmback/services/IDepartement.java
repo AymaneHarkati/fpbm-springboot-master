@@ -10,7 +10,7 @@ import java.util.List;
 @Transactional
 public interface IDepartement {
     Departement saveDepartement(Departement departement);
-    List<Departement> getDepartement(Departement departement);
+    List<Departement> getDepartement();
 
 
     Departement getDepartementById(Long deparementId);

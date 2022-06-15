@@ -23,7 +23,7 @@ public class DepartementServiceImp implements IDepartement {
     }
 
     @Override
-    public List<Departement> getDepartement(Departement departement) {
+    public List<Departement> getDepartement() {
          List<Departement> departementList = departementRepository.findAll();
          return departementList;
     }

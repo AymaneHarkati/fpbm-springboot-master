@@ -12,8 +12,8 @@ public class DepartementRest {
     @Autowired
     private IDepartement departementService;
     @GetMapping("/Departement")
-    public List<Departement> getDepartement(Departement departement){
-        return departementService.getDepartement(departement);
+    public List<Departement> getDepartement(){
+        return departementService.getDepartement();
     }
     @GetMapping("/Departement/{departementId}")
     public Departement getDepartementByid(@PathVariable Long departementId) {

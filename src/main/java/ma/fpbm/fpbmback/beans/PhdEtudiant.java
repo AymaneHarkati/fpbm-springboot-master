@@ -24,7 +24,7 @@ public class PhdEtudiant extends Personne {
 
     //relation avec la table ced
     @ManyToOne
-    private Ced ced;
+    private Ced idCed;
 
     //relation avec la table soutenance
     @OneToMany(mappedBy = "phdEtudiant_sout")

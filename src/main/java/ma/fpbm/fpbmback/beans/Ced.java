@@ -12,11 +12,12 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 public class Ced {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idCed;
+    private Long idCed;
 
     @OneToMany(mappedBy = "ced")
     private List<Labo> labo;
-
+    @OneToMany(mappedBy = "idCed")
+    private List<PhdEtudiant> phdEtudiants;
     @OneToMany(mappedBy = "idCed")
     private  List<Equipe> equipes;
 }
