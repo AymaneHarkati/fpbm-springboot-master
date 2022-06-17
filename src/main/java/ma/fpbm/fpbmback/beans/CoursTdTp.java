@@ -20,9 +20,16 @@ public class CoursTdTp {
     @Id
     @Column(name = "id_courstptp")
     private int id;
+
+
+    // reference set à la comparaison
+    private String code;
+
     @OneToMany(mappedBy = "idcoursTdTp")
     @ToString.Exclude
     private List<ProfesseurHasModule> professeurHasModules;
+
+    private String typeDeResponsabilite;
 
     @Override
     public boolean equals(Object o) {

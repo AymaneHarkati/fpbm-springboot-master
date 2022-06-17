@@ -6,4 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface DepartementRepository extends JpaRepository<Departement, Long> {
     Departement findByCode(String code);
     int deleteByCode(String code);
+
 }
