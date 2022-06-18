@@ -21,6 +21,7 @@ public class Salle {
     private String code;
     private String name;
     private Integer capacity;
+    private Integer capacityExam;
     private Integer nombreDeSurveillant;
 
     @OneToMany(mappedBy = "salle")
