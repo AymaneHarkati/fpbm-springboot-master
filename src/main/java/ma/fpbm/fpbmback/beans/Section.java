@@ -18,7 +18,7 @@ public class Section {
     @Id
     @Column(name = "sectionId")
     private int id;
-
+    private String name;
     @OneToMany(mappedBy = "idsection")
     private List<ProfesseurHasModule> professeurHasModules;
 
