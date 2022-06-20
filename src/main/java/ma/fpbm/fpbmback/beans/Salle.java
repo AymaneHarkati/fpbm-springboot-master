@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -15,21 +13,23 @@ import java.util.Objects;
 @AllArgsConstructor @NoArgsConstructor
 public class Salle {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String code;
     private String name;
     private Integer capacity;
-    private Integer capacityExam;
-    private Integer nombreDeSurveillant;
 
+    private Integer capacityExam;
+    
+    private Integer nombreDeSurveillant;
+    /*
     @OneToMany(mappedBy = "salle")
     private Collection<Examen> examen;
 
     @OneToMany(mappedBy = "salle_sout")
     private Collection<Soutenance> soutenances;
-
+    */
 
 
     public void setId(Long id) {
