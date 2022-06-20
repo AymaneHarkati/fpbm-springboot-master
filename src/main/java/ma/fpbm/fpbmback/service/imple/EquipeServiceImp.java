@@ -1,7 +1,8 @@
-package ma.fpbm.fpbmback.services;
+package ma.fpbm.fpbmback.service.imple;
 
 import ma.fpbm.fpbmback.beans.Equipe;
 import ma.fpbm.fpbmback.repository.EquipeRepository;
+import ma.fpbm.fpbmback.service.facade.IEquipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

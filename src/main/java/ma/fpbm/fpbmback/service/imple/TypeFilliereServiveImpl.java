@@ -1,7 +1,8 @@
-package ma.fpbm.fpbmback.services;
+package ma.fpbm.fpbmback.service.imple;
 
 import ma.fpbm.fpbmback.beans.TypeFiliere;
 import ma.fpbm.fpbmback.repository.TypeFilliereRepository;
+import ma.fpbm.fpbmback.service.facade.ITypeFillire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class TypeFilliereServiveImpl implements ITypeFillire{
+public class TypeFilliereServiveImpl implements ITypeFillire {
     @Autowired
     private TypeFilliereRepository typeFilliereRepository;
     @Override

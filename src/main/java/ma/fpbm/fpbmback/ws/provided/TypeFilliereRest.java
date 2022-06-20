@@ -1,8 +1,7 @@
-package ma.fpbm.fpbmback.controller;
+package ma.fpbm.fpbmback.ws.provided;
 
-import ma.fpbm.fpbmback.beans.Equipe;
 import ma.fpbm.fpbmback.beans.TypeFiliere;
-import ma.fpbm.fpbmback.services.TypeFilliereServiveImpl;
+import ma.fpbm.fpbmback.service.imple.TypeFilliereServiveImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

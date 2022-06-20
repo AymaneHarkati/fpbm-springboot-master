@@ -1,4 +1,4 @@
-package ma.fpbm.fpbmback.services;
+package ma.fpbm.fpbmback.service.facade;
 
 import ma.fpbm.fpbmback.beans.Equipe;
 
