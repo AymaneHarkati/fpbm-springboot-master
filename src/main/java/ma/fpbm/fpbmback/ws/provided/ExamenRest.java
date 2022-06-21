@@ -27,8 +27,8 @@ public class ExamenRest {
     }
 
     @DeleteMapping("/deletecode/{code}")
-    public int deleteByCode(@PathVariable String code) {
-        return examenServiceImple.deleteByCode(code);
+    public String deleteByCode(@PathVariable Long code) {
+        return examenServiceImple.deleteById(code);
     }
 
     @PutMapping("/")

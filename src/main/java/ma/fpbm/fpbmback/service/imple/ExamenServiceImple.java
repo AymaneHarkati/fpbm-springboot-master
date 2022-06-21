@@ -32,8 +32,9 @@ public class ExamenServiceImple implements ExamenService {
     }
 
     @Override
-    public int deleteByCode(String code) {
-        return examenRepository.deleteByCode(code);
+    public String deleteById(Long code) {
+        examenRepository.deleteById(code);
+        return "Deleted";
     }
 
     @Override

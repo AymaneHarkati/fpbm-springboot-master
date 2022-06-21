@@ -5,6 +5,4 @@ import ma.fpbm.fpbmback.beans.Filiere;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ExamenRepository extends JpaRepository<Examen,Long> {
-    Filiere findByCode(String code);
-    int deleteByCode(String code);
 }

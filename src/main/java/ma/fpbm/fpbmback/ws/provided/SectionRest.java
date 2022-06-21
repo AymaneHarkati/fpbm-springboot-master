@@ -26,7 +26,7 @@ public class SectionRest {
     }
 
     @DeleteMapping("/deletecode/{code}")
-    public int deleteByCode(@PathVariable String code) {
+    public String deleteByCode(@PathVariable Long code) {
         return sectionServiceImple.deleteByCode(code);
     }
 

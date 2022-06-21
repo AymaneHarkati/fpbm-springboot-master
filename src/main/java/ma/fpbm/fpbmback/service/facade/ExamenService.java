@@ -8,6 +8,6 @@ import java.util.List;
 public interface ExamenService {
     List<Examen> findAll();
     Examen save (Examen examen);
-    int deleteByCode (String code);
+    String deleteById (Long code);
     Examen update (Examen examen);
 }

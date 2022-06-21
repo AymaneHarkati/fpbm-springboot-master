@@ -5,6 +5,4 @@ import ma.fpbm.fpbmback.beans.Section;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SectionRepository extends JpaRepository<Section,Long> {
-    Filiere findByCode(String code);
-    int deleteByCode(String code);
 }

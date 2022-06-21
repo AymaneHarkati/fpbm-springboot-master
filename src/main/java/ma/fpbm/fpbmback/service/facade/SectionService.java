@@ -8,6 +8,6 @@ import java.util.List;
 public interface SectionService {
     List<Section> findAll();
     Section save (Section section);
-    int deleteByCode (String code);
+    String deleteByCode (Long code);
     Section update (Section section);
 }

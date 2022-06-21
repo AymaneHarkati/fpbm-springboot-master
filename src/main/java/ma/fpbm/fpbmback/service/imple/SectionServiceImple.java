@@ -33,8 +33,9 @@ public class SectionServiceImple implements SectionService {
     }
 
     @Override
-    public int deleteByCode(String code) {
-        return sectionRepository.deleteByCode(code);
+    public String deleteByCode(Long code) {
+        sectionRepository.deleteById(code);
+        return "Deleted Section with the id : " + code;
     }
 
     @Override
