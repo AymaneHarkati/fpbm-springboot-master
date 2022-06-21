@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@RequestMapping(value = "/salle")
 public class SalleRest {
     @Autowired
     private SalleServiceImpl salleService;
@@ -31,7 +32,7 @@ public class SalleRest {
         return salleService.saveSalle(salle);
     }
 
-    @DeleteMapping("/")
+    @DeleteMapping("/{idSalle}")
     public String deleteSalle(@PathVariable Long idSalle){
         return salleService.deleteSalle(idSalle);
     }

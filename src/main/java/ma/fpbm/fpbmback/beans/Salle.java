@@ -23,13 +23,13 @@ public class Salle {
     private Integer capacityExam;
     
     private Integer nombreDeSurveillant;
-    /*
+
     @OneToMany(mappedBy = "salle")
     private Collection<Examen> examen;
 
     @OneToMany(mappedBy = "salle_sout")
     private Collection<Soutenance> soutenances;
-    */
+
 
 
     public void setId(Long id) {

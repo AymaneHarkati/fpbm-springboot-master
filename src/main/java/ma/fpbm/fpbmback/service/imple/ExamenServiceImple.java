@@ -26,7 +26,7 @@ public class ExamenServiceImple implements ExamenService {
 
         // validate the DB data;
 
-       examenRepository.save(examen);
+        examenRepository.save(examen);
 
         return null;
     }

@@ -18,12 +18,12 @@ public class Module {
     @Column(name = "Module_id")
     private Long id;
     private String groupes;
-    /*
+
     @ManyToOne
-    private Semestre semestre;*/
-    /*
+    private Semestre semestre;
+
     @OneToMany(mappedBy = "idmodule")
     @ToString.Exclude
-    private List<ProfesseurHasModule> professeurHasModules;*/
+    private List<ProfesseurHasModule> professeurHasModules;
 
 }

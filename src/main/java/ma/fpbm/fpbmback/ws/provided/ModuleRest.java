@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.ws.provided;
 
 
+import ma.fpbm.fpbmback.beans.Module;
 import ma.fpbm.fpbmback.service.imple.ModuleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,31 +13,26 @@ import java.util.List;
 public class ModuleRest {
 
     @Autowired
-    private ModuleServiceImpl moduleService;
-
-    @GetMapping("/{idModule}")
-    public Module getModuleById(@PathVariable Long idModule){
-        return moduleService.getModuleById(idModule);
-    }
+    private ModuleServiceImpl moduleServiceImple;
 
     @GetMapping("/")
-    public List<Module> getAllModule(){
-        return moduleService.getAllModule();
-    }
-
-    @PutMapping("/")
-    public Module updateModule(@RequestBody Module module){
-        return moduleService.updateModule(module);
+    public List<Module> findAll() {
+        return moduleServiceImple.findAll();
     }
 
     @PostMapping("/")
-    public Module saveModule(@RequestBody Module module){
-        return moduleService.saveModule(module);
+    public Module save(@RequestBody Module module) {
+        return moduleServiceImple.save(module);
     }
 
-    @DeleteMapping("/")
-    public String deleteModule(@PathVariable Long idModule){
-        return moduleService.deleteModule(idModule);
+    @DeleteMapping("/deletecode/{code}")
+    public String deleteByCode(@PathVariable Long code) {
+        return moduleServiceImple.deleteById(code);
+    }
+
+    @PutMapping("/")
+    public Module update(@RequestBody Module module) {
+        return moduleServiceImple.update(module);
     }
 
 

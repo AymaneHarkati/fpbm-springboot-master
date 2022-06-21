@@ -5,41 +5,41 @@ import ma.fpbm.fpbmback.service.facade.IModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
-
+import ma.fpbm.fpbmback.beans.Module;
 @Service
+@Transactional
 public class ModuleServiceImpl implements IModule {
 
     @Autowired
     private ModuleRepository moduleRepository;
-    @Override
-    public Module getModuleById(Long idModule){
-        return moduleRepository.findById(idModule).orElseThrow(() -> new RuntimeException("Module not found"));
-    }
+
 
     @Override
-    public List<Module> getAllModule() {
+    public List<Module> findAll() {
         return moduleRepository.findAll();
     }
 
     @Override
-    public Module saveModule(Module module) {
-        return moduleRepository.save(module);
+    public Module save(Module module) {
+        // validate the input data :
+
+        // validate the DB data;
+
+        moduleRepository.save(module);
+
+        return null;
     }
 
     @Override
-    public Module updateModule(Module module) {
-        return moduleRepository.save(module);
+    public String deleteById(Long code) {
+        moduleRepository.deleteById(code);
+        return "Deleted";
     }
 
     @Override
-    public String deleteModule(Long idModule) {
-        try {
-            moduleRepository.deleteById(idModule);
-            return "Module deleted";
-        }catch (Exception e){
-            System.out.println(e);
-        }
-        return "Error while deleting Module";
+    public Module update(Module module) {
+        return null;
     }
 }
