@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "examen")
+@RequestMapping(value = "/examen")
 public class ExamenRest {
     @Autowired
     private ExamenServiceImple examenServiceImple;
-
+    //hello
     @GetMapping("/")
     public List<Examen> findAll() {
         return examenServiceImple.findAll();

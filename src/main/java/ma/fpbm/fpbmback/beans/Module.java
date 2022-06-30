@@ -2,6 +2,7 @@ package ma.fpbm.fpbmback.beans;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -18,7 +19,7 @@ public class Module {
     @Column(name = "Module_id")
     private Long id;
     private String groupes;
-
+    @JsonIgnore
     @ManyToOne
     private Semestre semestre;
 

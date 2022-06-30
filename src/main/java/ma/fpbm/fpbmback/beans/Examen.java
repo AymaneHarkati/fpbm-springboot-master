@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,10 +20,10 @@ public class Examen {
 
     @Column
     private String heure;
-
+    @JsonIgnore
     @ManyToOne
     private Salle salle;
-
+    @JsonIgnore
     @ManyToOne
     private ProfesseurHasModule profHasModule;
 
