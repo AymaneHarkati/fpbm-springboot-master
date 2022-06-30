@@ -19,7 +19,7 @@ public class Professeur extends Personne {
     @OneToMany(mappedBy = "responsable")
     private List<Filiere> fillier;
 
-    @OneToMany(mappedBy = "idprofesseur")
+    @OneToMany(mappedBy = "professeur")
     private List<ProfesseurHasModule> professeurHasModules;
 
     //relation avec la table jury

@@ -23,7 +23,7 @@ public class Module {
     @ManyToOne
     private Semestre semestre;
 
-    @OneToMany(mappedBy = "idmodule")
+    @OneToMany(mappedBy = "module")
     @ToString.Exclude
     private List<ProfesseurHasModule> professeurHasModules;
 

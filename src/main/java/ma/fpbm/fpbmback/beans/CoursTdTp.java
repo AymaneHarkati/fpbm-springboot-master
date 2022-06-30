@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -25,8 +26,8 @@ public class CoursTdTp {
     // reference set à la comparaison
     private String code;
 
-    @OneToMany(mappedBy = "idcoursTdTp")
-    @ToString.Exclude
+    @OneToMany(mappedBy = "coursTdTp")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<ProfesseurHasModule> professeurHasModules;
 
     private String typeDeResponsabilite;

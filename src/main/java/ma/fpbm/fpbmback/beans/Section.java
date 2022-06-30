@@ -19,7 +19,7 @@ public class Section {
     @Column(name = "sectionId")
     private int id;
     private String name;
-    @OneToMany(mappedBy = "idsection")
+    @OneToMany(mappedBy = "section")
     private List<ProfesseurHasModule> professeurHasModules;
 
 }

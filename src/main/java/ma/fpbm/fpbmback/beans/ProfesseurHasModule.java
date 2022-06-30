@@ -17,23 +17,14 @@ public class ProfesseurHasModule {
     @Column(name = "profModId")
     private int id;
     @ManyToOne
-    private Annee idannee;
+    private Annee annee;
     @ManyToOne
-    private Professeur idprofesseur;
+    private Professeur professeur;
     @ManyToOne
-    private Module idmodule;
+    private Module module;
     @ManyToOne
-    private CoursTdTp idcoursTdTp;
+    private CoursTdTp coursTdTp;
     @ManyToOne
-    private Section idsection;
-
-    @OneToMany(mappedBy = "profHasModule")
-    private Collection<Examen> examen;
-
-    @OneToMany(mappedBy = "professeurHasModule_id")
-    private Collection<ProfesseurHasModuleHasEtudiant> professeurHasModuleHasEtudiants;
-
-
-
+    private Section section;
 
 }

@@ -12,7 +12,7 @@ public class Annee {
 
     private String code;
     private String annee;
-    @OneToMany(mappedBy = "idannee")
+    @OneToMany(mappedBy = "annee")
     private List<ProfesseurHasModule> professeurHasModules;
 
 
