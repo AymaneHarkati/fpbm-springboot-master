@@ -10,27 +10,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "section")
 public class SectionRest {
     @Autowired
     private SectionServiceImple sectionServiceImple;
 
-    @GetMapping("/")
+    @GetMapping("/section")
     public List<Section> findAll() {
         return sectionServiceImple.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/section")
     public Section save(@RequestBody Section section) {
         return sectionServiceImple.save(section);
     }
 
-    @DeleteMapping("/deletecode/{code}")
+    @DeleteMapping("/section/deletecode/{code}")
     public String deleteByCode(@PathVariable Long code) {
         return sectionServiceImple.deleteByCode(code);
     }
 
-    @PutMapping("/")
+    @PutMapping("/section")
     public Section update(@RequestBody Section section) {
         return sectionServiceImple.update(section);
     }

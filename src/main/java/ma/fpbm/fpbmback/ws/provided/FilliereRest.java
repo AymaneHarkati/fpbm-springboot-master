@@ -15,7 +15,7 @@ public class FilliereRest {
     @Autowired
     private FilliereServiceImple filliereServiceImple;
 
-    @GetMapping("/")
+    @GetMapping("/filliere")
     public List<Filiere> findAll() {
         return filliereServiceImple.findAll();
     }

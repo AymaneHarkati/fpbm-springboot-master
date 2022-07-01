@@ -1,13 +1,9 @@
 package ma.fpbm.fpbmback.beans;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -19,7 +15,8 @@ public class Section {
     @Column(name = "sectionId")
     private int id;
     private String name;
-    @OneToMany(mappedBy = "section")
+    @JsonIgnore
+    @OneToMany(mappedBy = "section", fetch = FetchType.LAZY)
     private List<ProfesseurHasModule> professeurHasModules;
 
 }

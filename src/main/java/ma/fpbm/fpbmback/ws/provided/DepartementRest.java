@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "departement")
+
 public class DepartementRest {
     @Autowired
     private DepartementService departementService;
-
+    @RequestMapping(value="/departement")
     @GetMapping("/")
     public List<Departement> findAll() {
         return departementService.findAll();
