@@ -1,5 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +15,7 @@ public class Annee {
     private String code;
     private String annee;
     @OneToMany(mappedBy = "annee")
+    @JsonManagedReference
     private List<ProfesseurHasModule> professeurHasModules;
 
 

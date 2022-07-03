@@ -10,17 +10,17 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "filliere")
+@RequestMapping("filliere")
 public class FilliereRest {
     @Autowired
     private FilliereServiceImple filliereServiceImple;
 
-    @GetMapping("/filliere")
+    @GetMapping
     public List<Filiere> findAll() {
         return filliereServiceImple.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Filiere save(@RequestBody Filiere filiere) {
         return filliereServiceImple.save(filiere);
     }
@@ -30,7 +30,7 @@ public class FilliereRest {
         return filliereServiceImple.deleteByCode(code);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Filiere update(@RequestBody Filiere filiere) {
         return filliereServiceImple.update(filiere);
     }

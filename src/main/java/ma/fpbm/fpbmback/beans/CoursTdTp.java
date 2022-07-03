@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.Hibernate;
@@ -28,6 +29,7 @@ public class CoursTdTp {
 
     @OneToMany(mappedBy = "coursTdTp")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonManagedReference
     private List<ProfesseurHasModule> professeurHasModules;
 
     private String typeDeResponsabilite;

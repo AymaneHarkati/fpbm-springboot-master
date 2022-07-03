@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +14,7 @@ import java.util.Collection;
 @NoArgsConstructor @AllArgsConstructor
 public class Etudiant extends Personne{
     @ManyToOne
+    @JsonBackReference
     private Filiere idfiliere;
 
     @OneToMany(mappedBy = "idEtudiant")

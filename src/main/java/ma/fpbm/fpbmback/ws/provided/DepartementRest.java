@@ -8,17 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("departement")
 public class DepartementRest {
     @Autowired
     private DepartementService departementService;
-    @RequestMapping(value="/departement")
-    @GetMapping("/")
+    @GetMapping
     public List<Departement> findAll() {
         return departementService.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Departement save(@RequestBody Departement departement) {
         return departementService.save(departement);
     }
@@ -28,7 +27,7 @@ public class DepartementRest {
         return departementService.deleteByCode(code);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Departement update(@RequestBody Departement departement) {
         return departementService.update(departement);
     }

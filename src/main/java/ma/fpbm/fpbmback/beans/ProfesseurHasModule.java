@@ -1,5 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;

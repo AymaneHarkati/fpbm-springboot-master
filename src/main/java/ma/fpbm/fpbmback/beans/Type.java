@@ -1,7 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,8 +19,8 @@ public class Type {
     @Id
     private int id;
     private String nom;
-    @OneToMany
-    (mappedBy = "type")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "type")
     private List<Filiere> fillier; // Filler has many type
 
 }

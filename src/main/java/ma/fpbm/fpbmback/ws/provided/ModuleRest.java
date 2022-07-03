@@ -9,18 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/module")
+@RequestMapping( "module")
 public class ModuleRest {
 
     @Autowired
     private ModuleServiceImpl moduleServiceImple;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Module> findAll() {
         return moduleServiceImple.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Module save(@RequestBody Module module) {
         return moduleServiceImple.save(module);
     }
@@ -30,7 +30,7 @@ public class ModuleRest {
         return moduleServiceImple.deleteById(code);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Module update(@RequestBody Module module) {
         return moduleServiceImple.update(module);
     }

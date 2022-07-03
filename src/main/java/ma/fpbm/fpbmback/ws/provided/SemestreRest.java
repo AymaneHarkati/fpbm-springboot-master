@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/semestre")
+@RequestMapping("semestre")
 public class SemestreRest {
 
     @Autowired
@@ -20,17 +20,17 @@ public class SemestreRest {
         return semestreService.getSemestreById(idSemestre);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Semestre> getAllSemestre(){
         return semestreService.getAllSemestre();
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Semestre updateSemestre(@RequestBody Semestre semestre){
         return semestreService.updateSemestre(semestre);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Semestre saveSemestre(@RequestBody Semestre semestre){
         return semestreService.saveSemestre(semestre);
     }

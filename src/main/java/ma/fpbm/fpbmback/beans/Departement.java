@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class Departement {
     private String name;
 
     @OneToMany(mappedBy = "depart_filliere")
+    @JsonManagedReference
     private Collection<Filiere> filliere;
 
     public Long getId() {
