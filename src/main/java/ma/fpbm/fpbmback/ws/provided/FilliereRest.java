@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("filliere")
@@ -19,7 +20,10 @@ public class FilliereRest {
     public List<Filiere> findAll() {
         return filliereServiceImple.findAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<Filiere> findById(@PathVariable Long id){
+        return filliereServiceImple.findById(id);
+    }
     @PostMapping
     public Filiere save(@RequestBody Filiere filiere) {
         return filliereServiceImple.save(filiere);

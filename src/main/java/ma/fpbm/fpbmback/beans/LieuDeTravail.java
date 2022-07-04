@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,5 +15,6 @@ public class LieuDeTravail {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(mappedBy = "idLieuTravail")
+    @JsonBackReference
     private Collection<Professeur> professeurs;
 }

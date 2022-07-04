@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping( "module")
@@ -18,6 +19,10 @@ public class ModuleRest {
     @GetMapping
     public List<Module> findAll() {
         return moduleServiceImple.findAll();
+    }
+    @GetMapping("/{id}")
+    public Optional<Module> findById(@PathVariable Long id){
+        return moduleServiceImple.findById(id);
     }
 
     @PostMapping

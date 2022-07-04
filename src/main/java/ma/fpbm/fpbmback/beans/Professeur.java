@@ -33,6 +33,7 @@ public class Professeur extends Personne {
 
     @JsonManagedReference
     @ManyToOne
+
     private LieuDeTravail idLieuTravail;
 
 

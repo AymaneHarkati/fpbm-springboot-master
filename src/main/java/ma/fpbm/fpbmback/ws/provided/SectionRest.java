@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("section")
@@ -19,7 +20,10 @@ public class SectionRest {
     public List<Section> findAll() {
         return sectionServiceImple.findAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<Section> findById(@PathVariable Long id){
+        return sectionServiceImple.findById(id);
+    }
     @PostMapping
     public Section save(@RequestBody Section section) {
         return sectionServiceImple.save(section);

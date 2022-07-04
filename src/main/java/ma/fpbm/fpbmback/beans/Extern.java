@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,5 +17,6 @@ public class Extern {
     private Long id;
 
     @OneToMany(mappedBy = "id_extern")
+    @JsonBackReference
     private Collection<Professeur> professeurs;
 }

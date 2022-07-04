@@ -8,33 +8,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("TypeFilliere")
 public class TypeFilliereRest {
     @Autowired
     private TypeFilliereServiveImpl typeFilliereServive;
 
-    @GetMapping("/TypeFiliere")
+    @GetMapping
     public List<TypeFiliere> getAllEquipe(){
         return typeFilliereServive.getAllTpFilliere();
     }
 
-    @GetMapping("/TypeFilliere/{idTpFlr}")
+    @GetMapping("/{idTpFlr}")
     public TypeFiliere getEquipeById(@PathVariable Long idTpFlr){
         return typeFilliereServive.getTypeFillireById(idTpFlr);
     }
 
-    @PostMapping("/tpFlr/saveTpFLr")
+    @PostMapping
     public TypeFiliere saveEquipe(@RequestBody TypeFiliere typeFiliere){
         return typeFilliereServive.saveTpFilliere(typeFiliere);
     }
 
-    @PutMapping("/updateTpFlr/{idTpFlr}")
+    @PutMapping("idTpFlr}")
     public TypeFiliere updateEquipe(@PathVariable Long idTpFlr,@RequestBody TypeFiliere typeFiliere){
         typeFiliere.setCode(typeFiliere.getCode());
         typeFiliere.setName(typeFiliere.getName());
         return typeFilliereServive.saveTpFilliere(typeFiliere);
     }
 
-    @DeleteMapping("/deleteTpFlr/{idTpFlr}")
+    @DeleteMapping("{idTpFlr}")
     public String deleteEquipe(@PathVariable Long idTpFlr){
         return typeFilliereServive.deleteTpFilliere(idTpFlr);
     }

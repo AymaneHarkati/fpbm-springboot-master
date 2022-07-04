@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartementServiceImple implements DepartementService {
@@ -18,6 +19,11 @@ public class DepartementServiceImple implements DepartementService {
     @Override
     public List<Departement> findAll() {
         return departementRepository.findAll();
+    }
+
+    @Override
+    public Optional<Departement> findById(Long id) {
+        return departementRepository.findById(id);
     }
 
     @Override

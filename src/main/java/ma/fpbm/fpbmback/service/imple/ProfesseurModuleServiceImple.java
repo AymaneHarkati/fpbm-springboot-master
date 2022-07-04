@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProfesseurModuleServiceImple implements ProfesseurModuleService {
     @Autowired
@@ -15,6 +17,11 @@ public class ProfesseurModuleServiceImple implements ProfesseurModuleService {
     @Override
     public List<ProfesseurHasModule> findAll() {
         return professeurModuleRepository.findAll();
+    }
+
+    @Override
+    public Optional<ProfesseurHasModule> findById(Long id) {
+        return professeurModuleRepository.findById(id);
     }
 
     @Override

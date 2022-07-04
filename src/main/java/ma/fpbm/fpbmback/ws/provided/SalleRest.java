@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping(value = "/salle")
+@RequestMapping( "salle")
 public class SalleRest {
     @Autowired
     private SalleServiceImpl salleService;
@@ -17,17 +17,17 @@ public class SalleRest {
         return salleService.getSalleById(idSalle);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Salle> getAllSalle(){
         return salleService.getAllSalle();
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Salle updateSalle(@RequestBody Salle salle){
         return salleService.updateSalle(salle);
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Salle saveSalle(@RequestBody Salle salle){
         return salleService.saveSalle(salle);
     }

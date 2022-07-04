@@ -17,5 +17,4 @@ import java.util.Date;
 public abstract class Personne extends User {
 
     private String cin;
-    private S
 }

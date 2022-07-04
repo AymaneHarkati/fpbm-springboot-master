@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,11 @@ public class ExamenHasProfesseurHasModuleHasEtudiant {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "id_exam")
+    @JsonManagedReference
+
     private Examen examen;
     @ManyToOne
     @JoinColumn(name = "professeur_has_module_has_etudiant")
+    @JsonManagedReference
     private ProfesseurHasModuleHasEtudiant professeurHasModuleHasEtudiant;
 }

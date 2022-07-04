@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,5 +14,7 @@ public class Equipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idEquipe;
     @ManyToOne
+    @JsonManagedReference
+
     private Ced idCed;
 }

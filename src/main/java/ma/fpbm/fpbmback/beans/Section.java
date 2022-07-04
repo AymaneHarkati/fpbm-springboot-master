@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
@@ -14,10 +15,10 @@ import java.util.List;
 public class Section {
     @Id
     @Column(name = "sectionId")
-    private int id;
+    private Long id;
     private String name;
     @OneToMany(mappedBy = "section", fetch = FetchType.LAZY)
-    @JsonManagedReference
+    @JsonBackReference
     private List<ProfesseurHasModule> professeurHasModules;
 
 }

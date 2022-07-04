@@ -8,33 +8,33 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
+@RequestMapping("equipe")
 public class EquipeRest {
     @Autowired
     public IEquipe equipeServices;
 
-    @GetMapping("/equipe")
+    @GetMapping
     public List<Equipe> getAllEquipe(){
         return equipeServices.getAllEquipes();
     }
 
-    @GetMapping("/equipe/{equipeId}")
+    @GetMapping("/{equipeId}")
     public Equipe getEquipeById(@PathVariable Long equipeId){
         return equipeServices.getEquipeById(equipeId);
     }
 
-    @PostMapping("/equipe/saveEquipe")
+    @PostMapping
     public Equipe saveEquipe(@RequestBody Equipe equipe){
         return equipeServices.saveEquipe(equipe);
     }
 
-    @PutMapping("/updateEquipe/{idEquipe}")
+    @PutMapping("/{idEquipe}")
     public Equipe updateEquipe(@PathVariable Long idEquipe,@RequestBody Equipe equipe){
         equipe.setIdCed(equipe.getIdCed());
         return equipeServices.updateEquipe(equipe);
     }
 
-    @DeleteMapping("/deleteequipe/{idEquipe}")
+    @DeleteMapping("/{idEquipe}")
     public String deleteEquipe(@PathVariable Long idEquipe){
         return equipeServices.deleteEquipe(idEquipe);
     }

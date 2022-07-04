@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
@@ -29,7 +30,7 @@ public class CoursTdTp {
 
     @OneToMany(mappedBy = "coursTdTp")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @JsonManagedReference
+    @JsonBackReference
     private List<ProfesseurHasModule> professeurHasModules;
 
     private String typeDeResponsabilite;

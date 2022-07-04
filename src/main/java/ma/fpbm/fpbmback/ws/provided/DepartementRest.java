@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("departement")
@@ -16,7 +17,10 @@ public class DepartementRest {
     public List<Departement> findAll() {
         return departementService.findAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<Departement> findById(@PathVariable Long id){
+        return departementService.findById(id);
+    }
     @PostMapping
     public Departement save(@RequestBody Departement departement) {
         return departementService.save(departement);

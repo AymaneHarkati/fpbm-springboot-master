@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.service.imple;
 
+
 import ma.fpbm.fpbmback.repository.ModuleRepository;
 import ma.fpbm.fpbmback.service.facade.IModule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+
 import ma.fpbm.fpbmback.beans.Module;
 @Service
 @Transactional
@@ -15,10 +18,15 @@ public class ModuleServiceImpl implements IModule {
     @Autowired
     private ModuleRepository moduleRepository;
 
-
     @Override
     public List<Module> findAll() {
-        return moduleRepository.findAll();
+       return moduleRepository.findAll();
+
+    }
+
+    @Override
+    public Optional<Module> findById(Long id) {
+        return moduleRepository.findById(id);
     }
 
     @Override

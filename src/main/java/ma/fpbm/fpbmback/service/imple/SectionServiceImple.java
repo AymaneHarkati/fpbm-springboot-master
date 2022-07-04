@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SectionServiceImple implements SectionService {
@@ -19,6 +20,11 @@ public class SectionServiceImple implements SectionService {
     @Override
     public List<Section> findAll() {
         return sectionRepository.findAll();
+    }
+
+    @Override
+    public Optional<Section> findById(Long id) {
+        return sectionRepository.findById(id);
     }
 
     @Override

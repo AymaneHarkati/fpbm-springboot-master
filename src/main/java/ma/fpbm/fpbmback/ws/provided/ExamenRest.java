@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/examen")
+@RequestMapping( "/examen")
 public class ExamenRest {
     @Autowired
     private ExamenServiceImple examenServiceImple;
@@ -25,12 +25,12 @@ public class ExamenRest {
         return peronneService.getAllPersonne();
     }
     //hello
-    @GetMapping("/")
+    @GetMapping
     public List<Examen> findAll() {
         return examenServiceImple.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Examen save(@RequestBody Examen examen) {
         return examenServiceImple.save(examen);
     }
@@ -40,7 +40,7 @@ public class ExamenRest {
         return examenServiceImple.deleteById(code);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Examen update(@RequestBody Examen examen) {
         return examenServiceImple.update(examen);
     }

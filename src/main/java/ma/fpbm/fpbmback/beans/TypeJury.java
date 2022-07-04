@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ public class TypeJury {
     private int id;
 
     @OneToMany(mappedBy = "typeJury")
+    @JsonBackReference
     private Collection<Jury> jury;
 
 

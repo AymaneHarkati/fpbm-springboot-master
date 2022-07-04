@@ -1,14 +1,14 @@
 package ma.fpbm.fpbmback.service.imple;
 
-import ma.fpbm.fpbmback.beans.Departement;
 import ma.fpbm.fpbmback.beans.Filiere;
-import ma.fpbm.fpbmback.repository.DepartementRepository;
 import ma.fpbm.fpbmback.repository.FilliereRepository;
 import ma.fpbm.fpbmback.service.facade.IFilliereService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FilliereServiceImple implements IFilliereService {
     @Autowired
@@ -18,6 +18,11 @@ public class FilliereServiceImple implements IFilliereService {
     @Override
     public List<Filiere> findAll() {
         return filliereRepository.findAll();
+    }
+
+    @Override
+    public Optional<Filiere> findById(Long id) {
+        return filliereRepository.findById(id);
     }
 
     @Override

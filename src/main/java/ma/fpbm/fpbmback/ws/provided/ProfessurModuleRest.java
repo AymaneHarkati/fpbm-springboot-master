@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("professeurModule")
@@ -18,7 +19,10 @@ public class ProfessurModuleRest {
     public List<ProfesseurHasModule> findAll() {
         return professurModuleService.findAll();
     }
-
+    @GetMapping("/{id}")
+    public Optional<ProfesseurHasModule> findById(@PathVariable Long id){
+        return professurModuleService.findById(id);
+    }
     @PostMapping
     public ProfesseurHasModule save(@RequestBody ProfesseurHasModule departement) {
         return professurModuleService.save(departement);

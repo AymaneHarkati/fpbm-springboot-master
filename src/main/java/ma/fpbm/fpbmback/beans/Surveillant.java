@@ -22,7 +22,7 @@ public class Surveillant {
     @JsonManagedReference
     private Professeur profSurveillant;
 
-    @JsonIgnore
+
     @ManyToOne
     @JsonManagedReference
     private Examen id_examen;

@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -16,5 +17,6 @@ public class Inscription {
     private int id;
     private Date dateInscription;
     @ManyToOne
+    @JsonManagedReference
     private PhdEtudiant phdEtudiant;
 }
