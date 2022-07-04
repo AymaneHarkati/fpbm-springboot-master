@@ -1,7 +1,6 @@
 package ma.fpbm.fpbmback.service.facade;
 
 import ma.fpbm.fpbmback.beans.Examen;
-import ma.fpbm.fpbmback.beans.Filiere;
 
 import java.util.List;
 
@@ -11,4 +10,5 @@ public interface ExamenService {
     String deleteById (Long code);
     Examen update (Examen examen);
 
+    List<Object[]> query();
 }

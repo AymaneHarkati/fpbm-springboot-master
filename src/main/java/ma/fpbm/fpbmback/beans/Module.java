@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -19,15 +20,13 @@ public class Module {
     @Id
     @Column(name = "Module_id")
     private Long id;
-    private String name;
     private String groupes;
-
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     private Semestre semestre;
 
     @OneToMany(mappedBy = "module")
-    @JsonManagedReference
+    @JsonBackReference
     private List<ProfesseurHasModule> professeurHasModules;
 
 }

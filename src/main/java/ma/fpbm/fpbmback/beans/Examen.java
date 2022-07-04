@@ -1,9 +1,12 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 
 import javax.persistence.*;
@@ -20,16 +23,20 @@ public class Examen {
 
     @Column
     private String heure;
-    @JsonIgnore
     @ManyToOne
+    @JsonManagedReference
     private Salle salle;
-    @JsonIgnore
+
+
     @ManyToOne
+    @JsonManagedReference
     private ProfesseurHasModule profHasModule;
 
     @OneToMany(mappedBy = "id_examen")
+    @JsonBackReference
     private Collection<Surveillant> surveillants;
     @OneToMany(mappedBy = "examen")
+    @JsonBackReference
     private Collection<ExamenHasProfesseurHasModuleHasEtudiant> examenProfModEtd;
 
 }

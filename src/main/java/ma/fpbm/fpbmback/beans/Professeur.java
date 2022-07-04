@@ -18,31 +18,32 @@ public class Professeur extends Personne {
     private String grade;
     private String telephone;
 
-    @OneToMany(mappedBy = "responsable")
-    @JsonManagedReference
+    @JsonBackReference
+    @OneToMany(mappedBy = "responsable", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private List<Filiere> fillier;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "professeur")
-    @JsonManagedReference
     private List<ProfesseurHasModule> professeurHasModules;
 
+    @JsonBackReference
     //relation avec la table jury
     @OneToMany(mappedBy = "professeur")
-    @JsonManagedReference
     private Collection<Jury> jury;
 
-    //relation avec la table lieuTravail
+    @JsonManagedReference
     @ManyToOne
-    @JsonBackReference
     private LieuDeTravail idLieuTravail;
 
+
     @OneToMany(mappedBy = "profSurveillant")
-    @JsonManagedReference
+    @JsonBackReference
     private Collection<Surveillant> surveillants;
 
+    @JsonManagedReference
     @ManyToOne
     private Examen id_examen;
-
+    @JsonManagedReference
     @ManyToOne
     private Extern id_extern;
 

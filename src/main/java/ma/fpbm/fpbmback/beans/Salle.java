@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +24,10 @@ public class Salle {
     private Integer capacityExam;
     
     private Integer nombreDeSurveillant;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "salle")
     private Collection<Examen> examen;
-
+    @JsonBackReference
     @OneToMany(mappedBy = "salle_sout")
     private Collection<Soutenance> soutenances;
 

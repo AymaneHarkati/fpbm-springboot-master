@@ -1,10 +1,12 @@
 package ma.fpbm.fpbmback.beans;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -22,24 +24,20 @@ public class Filiere {
     private String code;
     @Column
     private String name;
-
-    @ManyToOne
-    @JsonBackReference
-    private Professeur responsable;
-
-    @ManyToOne
-    @JsonBackReference
-    private Type type;
     @JsonManagedReference
+    @ManyToOne
+    private Professeur responsable;
+    @JsonIgnore @ToString.Exclude
+    @ManyToOne
+    private Type type;
+    @JsonIgnore @ToString.Exclude
     @OneToMany(mappedBy = "fillier_id")
     private List<Semestre> semestre;
-
+    @JsonIgnore @ToString.Exclude
     @OneToMany(mappedBy = "idfiliere")
-    @JsonManagedReference
     private List<Etudiant> etudiant;
-
+    @JsonIgnore @ToString.Exclude
     @ManyToOne
-    @JsonBackReference
     private Departement depart_filliere;
 
 }
