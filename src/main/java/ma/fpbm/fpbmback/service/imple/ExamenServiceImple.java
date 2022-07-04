@@ -1,9 +1,7 @@
 package ma.fpbm.fpbmback.service.imple;
 
 import ma.fpbm.fpbmback.beans.Examen;
-import ma.fpbm.fpbmback.beans.Filiere;
 import ma.fpbm.fpbmback.repository.ExamenRepository;
-import ma.fpbm.fpbmback.repository.FilliereRepository;
 import ma.fpbm.fpbmback.service.facade.ExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +38,11 @@ public class ExamenServiceImple implements ExamenService {
     @Override
     public Examen update(Examen examen) {
         return null;
+    }
+
+    @Override
+    public List<Object[]> query(){
+        return examenRepository.query();
     }
 
 

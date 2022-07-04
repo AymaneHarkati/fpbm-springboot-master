@@ -2,7 +2,9 @@ package ma.fpbm.fpbmback.beans;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.hibernate.Hibernate;
 
@@ -19,12 +21,12 @@ public class Module {
     @Column(name = "Module_id")
     private Long id;
     private String groupes;
-    @JsonIgnore
     @ManyToOne
+    @JsonManagedReference
     private Semestre semestre;
 
     @OneToMany(mappedBy = "module")
-    @ToString.Exclude
+    @JsonBackReference
     private List<ProfesseurHasModule> professeurHasModules;
 
 }

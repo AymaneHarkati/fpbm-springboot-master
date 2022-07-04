@@ -1,5 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,15 +18,23 @@ public class ProfesseurHasModule {
     @Id
     @Column(name = "profModId")
     private int id;
+    @OneToMany(mappedBy = "profHasModule")
+    @JsonBackReference
+    private Collection<Examen> examen;
     @ManyToOne
+    @JsonManagedReference
     private Annee annee;
     @ManyToOne
+    @JsonManagedReference
     private Professeur professeur;
     @ManyToOne
+    @JsonManagedReference
     private Module module;
     @ManyToOne
+    @JsonManagedReference
     private CoursTdTp coursTdTp;
     @ManyToOne
+    @JsonManagedReference
     private Section section;
 
 }

@@ -1,5 +1,6 @@
 package ma.fpbm.fpbmback.beans;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ public class Soutenance {
     @Id
     @GeneratedValue
     private Long id;
-
+    @JsonManagedReference
     @Column
     private String sujet;
 
