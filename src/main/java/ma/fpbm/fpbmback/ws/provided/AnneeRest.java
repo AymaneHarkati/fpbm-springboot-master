@@ -25,8 +25,8 @@ public class AnneeRest {
         return anneeServiceImple.findById(id);
     }
     @PostMapping
-    public Annee save(@RequestBody Annee filiere) {
-        return anneeServiceImple.save(filiere);
+    public Annee save(@RequestBody Annee annee) {
+        return anneeServiceImple.save(annee);
     }
 
     @DeleteMapping("/deletecode/{code}")
@@ -35,7 +35,7 @@ public class AnneeRest {
     }
 
     @PutMapping
-    public Annee update(@RequestBody Annee filiere) {
-        return anneeServiceImple.update(filiere);
+    public Annee update(@RequestBody Annee annee) {
+        return anneeServiceImple.update(annee);
     }
 }

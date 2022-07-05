@@ -48,6 +48,6 @@ public class ModuleServiceImpl implements IModule {
 
     @Override
     public Module update(Module module) {
-        return null;
+        return moduleRepository.save(module);
     }
 }

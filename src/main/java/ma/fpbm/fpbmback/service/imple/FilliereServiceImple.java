@@ -48,6 +48,6 @@ public class FilliereServiceImple implements IFilliereService {
 
     @Override
     public Filiere update(Filiere filiere) {
-        return null;
+        return filliereRepository.save(filiere);
     }
 }
