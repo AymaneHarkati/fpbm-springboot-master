@@ -13,7 +13,7 @@ public class TypeFilliereRest {
     @Autowired
     private TypeFilliereServiveImpl typeFilliereServive;
 
-    @GetMapping
+    @GetMapping("/")
     public List<TypeFiliere> getAllEquipe(){
         return typeFilliereServive.getAllTpFilliere();
     }
@@ -28,14 +28,14 @@ public class TypeFilliereRest {
         return typeFilliereServive.saveTpFilliere(typeFiliere);
     }
 
-    @PutMapping("idTpFlr}")
+    @PutMapping("/{idTpFlr}")
     public TypeFiliere updateEquipe(@PathVariable Long idTpFlr,@RequestBody TypeFiliere typeFiliere){
         typeFiliere.setCode(typeFiliere.getCode());
         typeFiliere.setName(typeFiliere.getName());
         return typeFilliereServive.saveTpFilliere(typeFiliere);
     }
 
-    @DeleteMapping("{idTpFlr}")
+    @DeleteMapping("/{idTpFlr}")
     public String deleteEquipe(@PathVariable Long idTpFlr){
         return typeFilliereServive.deleteTpFilliere(idTpFlr);
     }

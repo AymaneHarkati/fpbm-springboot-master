@@ -17,28 +17,35 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Filiere {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @ToString.Exclude
     private Long id;
+    @ToString.Exclude
     @Column
     private String code;
+    @ToString.Exclude
     @Column
     private String name;
+    @ToString.Exclude
     @JsonManagedReference
     @ManyToOne
     private Professeur responsable;
+    @ToString.Exclude
     @JsonManagedReference
     @ManyToOne
     private Type type;
-
+    @ToString.Exclude
     @JsonBackReference
     @OneToMany(mappedBy = "fillier_id")
     private List<Semestre> semestre;
-
+    @ToString.Exclude
     @JsonBackReference
     @OneToMany(mappedBy = "idfiliere")
     private List<Etudiant> etudiant;
+    @ToString.Exclude
     @JsonManagedReference
     @ManyToOne
     private Departement depart_filliere;

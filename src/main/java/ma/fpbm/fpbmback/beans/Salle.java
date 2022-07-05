@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -16,17 +17,21 @@ public class Salle {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @ToString.Exclude
     private String code;
+    @ToString.Exclude
     private String name;
+    @ToString.Exclude
     private Integer capacity;
-
+    @ToString.Exclude
     private Integer capacityExam;
-    
+    @ToString.Exclude
     private Integer nombreDeSurveillant;
+    @ToString.Exclude
     @JsonBackReference
     @OneToMany(mappedBy = "salle")
     private Collection<Examen> examen;
+    @ToString.Exclude
     @JsonBackReference
     @OneToMany(mappedBy = "salle_sout")
     private Collection<Soutenance> soutenances;

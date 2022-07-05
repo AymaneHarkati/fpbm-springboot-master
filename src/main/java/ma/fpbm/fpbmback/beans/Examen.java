@@ -13,30 +13,36 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity @Data
-@NoArgsConstructor @AllArgsConstructor
+@NoArgsConstructor @AllArgsConstructor @ToString
 public class Examen {
     @Id @GeneratedValue
+    @ToString.Exclude
     private Long id;
-
+    @ToString.Exclude
     @Column
     private String jour;
 
     @Column
+    @ToString.Exclude
     private String heure;
     @ManyToOne
     @JsonManagedReference
+    @ToString.Exclude
     private Salle salle;
 
 
     @ManyToOne
     @JsonManagedReference
+    @ToString.Exclude
     private ProfesseurHasModule profHasModule;
 
     @OneToMany(mappedBy = "id_examen")
     @JsonBackReference
+    @ToString.Exclude
     private Collection<Surveillant> surveillants;
     @OneToMany(mappedBy = "examen")
     @JsonBackReference
+    @ToString.Exclude
     private Collection<ExamenHasProfesseurHasModuleHasEtudiant> examenProfModEtd;
 
 }
