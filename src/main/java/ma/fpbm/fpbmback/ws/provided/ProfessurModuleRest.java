@@ -30,7 +30,6 @@ public class ProfessurModuleRest {
 
     @DeleteMapping("/deletecode/{code}")
     public String deleteByCode(@PathVariable Long code) {
-
         professurModuleService.deleteByCode(code);
         return "Record Deleted";
     }

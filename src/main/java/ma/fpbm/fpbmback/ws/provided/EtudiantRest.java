@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("etudiant")
+@RequestMapping("/etudiant")
 public class EtudiantRest {
     @Autowired
     private EtudiantServiceImpl etudiantService;
 
-    @GetMapping
+    @GetMapping("/")
     public List<Etudiant> getAll(){
         return etudiantService.getAll();
     }
