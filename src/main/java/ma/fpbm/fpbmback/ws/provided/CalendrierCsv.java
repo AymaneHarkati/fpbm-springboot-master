@@ -1,7 +1,9 @@
 package ma.fpbm.fpbmback.ws.provided;
 
 import ma.fpbm.fpbmback.beans.Examen;
+import ma.fpbm.fpbmback.beans.ProfesseurHasModuleHasEtudiant;
 import ma.fpbm.fpbmback.service.imple.ExamenServiceImple;
+import ma.fpbm.fpbmback.service.imple.ProfesseurModuleEtudiantServiceImpl;
 import ma.fpbm.fpbmback.toExcel.ExcelExport;
 import ma.fpbm.fpbmback.toExcel.ToExcel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+
 @RestController
 public class CalendrierCsv {
 
     @Autowired
     private ExamenServiceImple examenService;
+
+    @Autowired
+    private ProfesseurModuleEtudiantServiceImpl professeurModuleEtudiantService;
 
     @GetMapping("/export")
     public String toCsv(HttpServletResponse response) throws IOException {
@@ -57,8 +62,10 @@ public class CalendrierCsv {
         mav.setView(new ExcelExport());
         //read data from DB
         List<Examen> list= examenService.findAll();
+        List<ProfesseurHasModuleHasEtudiant> listModule = professeurModuleEtudiantService.getAll();
         //send to excelImpl class
         mav.addObject("list", list);
+        mav.addObject("listModule",listModule);
         return mav;
     }
 
