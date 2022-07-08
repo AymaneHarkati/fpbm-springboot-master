@@ -10,8 +10,10 @@ import org.hibernate.Hibernate;
 import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Data
@@ -33,6 +35,14 @@ public class Module {
     @JsonBackReference
     @ToString.Exclude
     private List<ProfesseurHasModule> professeurHasModules;
+
+
+    @ManyToMany
+    @JoinTable(
+            name = "module_etudiant",
+            joinColumns = @JoinColumn(name = "module_id"),
+            inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
+    Collection<Etudiant> moduleEtud;
 
 
 }

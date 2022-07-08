@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,6 +11,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity @Data @ToString
 @NoArgsConstructor @AllArgsConstructor
@@ -23,5 +25,7 @@ public class Etudiant extends Personne{
     @OneToMany(mappedBy = "idEtudiant")
     @JsonBackReference
     private Collection<ProfesseurHasModuleHasEtudiant> professeurHasModuleHasEtudiants;
+
+
     
 }
