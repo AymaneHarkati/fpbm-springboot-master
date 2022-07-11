@@ -26,6 +26,12 @@ public class Etudiant extends Personne{
     @JsonBackReference
     private Collection<ProfesseurHasModuleHasEtudiant> professeurHasModuleHasEtudiants;
 
+    /*
+    @JsonBackReference
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy="moduleEtud")
+    private Collection<Module> modules;*/
+
+
 
     
 }

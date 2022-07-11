@@ -4,10 +4,11 @@ import ma.fpbm.fpbmback.beans.Examen;
 import ma.fpbm.fpbmback.beans.ProfesseurHasModuleHasEtudiant;
 import ma.fpbm.fpbmback.service.imple.ExamenServiceImple;
 import ma.fpbm.fpbmback.service.imple.ProfesseurModuleEtudiantServiceImpl;
-import ma.fpbm.fpbmback.toExcel.ExcelExport;
+import ma.fpbm.fpbmback.toExcel.ExcelExportCalendar;
+import ma.fpbm.fpbmback.toExcel.ExcelExportEtudModule;
+import ma.fpbm.fpbmback.toExcel.ExcelExportModuleWithEffectif;
 import ma.fpbm.fpbmback.toExcel.ToExcel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,34 +33,10 @@ public class CalendrierCsv {
     @Autowired
     private ProfesseurModuleEtudiantServiceImpl professeurModuleEtudiantService;
 
-    @GetMapping("/export")
-    public String toCsv(HttpServletResponse response) throws IOException {
-        response.setContentType("text/csv");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
-        String currentDateTime = dateFormatter.format(new Date());
-
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=users_" + currentDateTime + ".csv";
-        response.setHeader(headerKey, headerValue);
-
-        List<Examen> examenList = examenService.findAll();
-
-        ICsvBeanWriter csvWriter = new CsvBeanWriter(response.getWriter(), CsvPreference.STANDARD_PREFERENCE);
-        String[] csvHeader = {"id", "jour", "heure"};
-        String[] nameMapping = {"id", "jour", "heure"};
-
-        csvWriter.writeHeader(csvHeader);
-        for(Examen examen : examenList){
-            csvWriter.write(examen, nameMapping);
-        }
-        csvWriter.close();
-        return "done";
-    }
-
-    @GetMapping("/excelExport")
+    @GetMapping("/excelExportCalendar")
     public ModelAndView exportToExcel() {
         ModelAndView mav = new ModelAndView();
-        mav.setView(new ExcelExport());
+        mav.setView(new ExcelExportCalendar());
         //read data from DB
         List<Examen> list= examenService.findAll();
         List<ProfesseurHasModuleHasEtudiant> listModule = professeurModuleEtudiantService.getAll();
@@ -69,21 +46,27 @@ public class CalendrierCsv {
         return mav;
     }
 
-    @GetMapping("/export/excel")
-    public String exportToExcel(HttpServletResponse response) throws IOException {
-        response.setContentType("application/octet-stream");
-        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
-        String currentDateTime = dateFormatter.format(new Date());
-
-        String headerKey = "Content-Disposition";
-        String headerValue = "attachment; filename=users_" + currentDateTime + ".xlsx";
-        response.setHeader(headerKey, headerValue);
-
-        List<Examen> list = examenService.findAll();
-
-        ToExcel excelExporter = new ToExcel(list);
-
-        excelExporter.export(response);
-        return "done";
+    @GetMapping("/excelExportModEtd")
+    public ModelAndView exportToExcelEtdMod() {
+        ModelAndView mav1 = new ModelAndView();
+        mav1.setView(new ExcelExportEtudModule());
+        //read data from DB
+        List<ProfesseurHasModuleHasEtudiant> listModule = professeurModuleEtudiantService.getAll();
+        //send to excelImpl class
+        mav1.addObject("listModule",listModule);
+        return mav1;
     }
+    @GetMapping("/excelExportModEff")
+    public ModelAndView exportToExcelModuleEffectif() {
+        ModelAndView mav1 = new ModelAndView();
+        mav1.setView(new ExcelExportModuleWithEffectif());
+        //read data from DB
+        List<Examen> module = examenService.findAll();
+        List<ProfesseurHasModuleHasEtudiant> listModule = professeurModuleEtudiantService.getAll();
+        //send to excelImpl class
+        mav1.addObject("listModule",listModule);
+        mav1.addObject("module",module);
+        return mav1;
+    }
+
 }

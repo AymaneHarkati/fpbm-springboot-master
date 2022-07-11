@@ -26,6 +26,7 @@ public class Module {
     private Long id;
     @ToString.Exclude
     private String groupes;
+
     @ManyToOne
     @JsonManagedReference
     @ToString.Exclude
@@ -35,14 +36,14 @@ public class Module {
     @JsonBackReference
     @ToString.Exclude
     private List<ProfesseurHasModule> professeurHasModules;
-
-
+    /*
+    @JsonManagedReference
     @ManyToMany
     @JoinTable(
             name = "module_etudiant",
             joinColumns = @JoinColumn(name = "module_id"),
             inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
-    Collection<Etudiant> moduleEtud;
+    Collection<Etudiant> moduleEtud;*/
 
 
 }

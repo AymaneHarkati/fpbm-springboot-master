@@ -2,11 +2,16 @@ package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Annee {
     @Id
@@ -15,6 +20,7 @@ public class Annee {
 
     private String code;
     private String annee;
+
     @OneToMany(mappedBy = "annee")
     @JsonBackReference
     private List<ProfesseurHasModule> professeurHasModules;

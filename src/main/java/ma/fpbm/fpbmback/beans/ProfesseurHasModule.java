@@ -43,6 +43,4 @@ public class ProfesseurHasModule {
     @ToString.Exclude
     private Section section;
 
-
-
 }

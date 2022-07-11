@@ -20,7 +20,6 @@ public class ProfesseurHasModuleHasEtudiant {
 
     @ManyToOne
     @JsonManagedReference
-
     private ProfesseurHasModule professeurHasModule_id;
     @OneToMany(mappedBy = "professeurHasModuleHasEtudiant")
     @JsonBackReference

@@ -16,7 +16,7 @@ import org.springframework.web.servlet.view.document.AbstractXlsView;
 
 
 
-public class ExcelExport extends AbstractXlsView {
+public class ExcelExportCalendar extends AbstractXlsView {
 
 
     @Override
@@ -40,14 +40,14 @@ public class ExcelExport extends AbstractXlsView {
 
         // create row0 as a header
         Row row0 = sheet.createRow(0);
-        row0.createCell(0).setCellValue("ID");
+        row0.createCell(0).setCellValue("Code Examen");
         row0.createCell(1).setCellValue("jour");
         row0.createCell(2).setCellValue("heure");
         row0.createCell(3).setCellValue("salle");
         row0.createCell(4).setCellValue("section");
         row0.createCell(5).setCellValue("filliere");
         row0.createCell(6).setCellValue("module");
-        row0.createCell(7).setCellValue("eff");
+        row0.createCell(7).setCellValue("effectif");
 
         // create row1 onwards from List<T>
         int rowNum = 1;
@@ -68,7 +68,6 @@ public class ExcelExport extends AbstractXlsView {
                 }
             }
             row.createCell(7).setCellValue(countEff);
-            //professeurModuleEtudiantService.countEffectif("M01:Analyse","section A")
         }
     }
 }
