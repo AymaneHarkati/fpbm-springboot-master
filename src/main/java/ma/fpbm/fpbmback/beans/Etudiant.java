@@ -18,12 +18,11 @@ import java.util.Set;
 public class Etudiant extends Personne{
 
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
+
     private Filiere idfiliere;
 
     @OneToMany(mappedBy = "idEtudiant")
-    @JsonBackReference
+    @JsonBackReference(value = "profhas_module_has_etudiant")
     private Collection<ProfesseurHasModuleHasEtudiant> professeurHasModuleHasEtudiants;
 
     /*

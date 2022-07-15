@@ -17,7 +17,7 @@ public class TypeJury {
     private int id;
 
     @OneToMany(mappedBy = "typeJury")
-    @JsonBackReference
+    @JsonBackReference(value = "typedeJury")
     private Collection<Jury> jury;
 
 

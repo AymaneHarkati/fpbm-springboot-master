@@ -19,12 +19,10 @@ public class Surveillant {
 
 
     @ManyToOne
-    @JsonManagedReference
     private Professeur profSurveillant;
 
 
     @ManyToOne
-    @JsonManagedReference
     private Examen id_examen;
 
 }

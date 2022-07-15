@@ -15,13 +15,11 @@ public class ProfesseurHasModuleHasEtudiant {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne
-    @JsonManagedReference
     private Etudiant idEtudiant;
 
     @ManyToOne
-    @JsonManagedReference
     private ProfesseurHasModule professeurHasModule_id;
     @OneToMany(mappedBy = "professeurHasModuleHasEtudiant")
-    @JsonBackReference
+    @JsonBackReference(value = "examenprof&mod")
     private Collection<ExamenHasProfesseurHasModuleHasEtudiant> examenProfModEtd;
 }

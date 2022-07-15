@@ -3,13 +3,16 @@ package ma.fpbm.fpbmback.ws.provided;
 
 import ma.fpbm.fpbmback.beans.Module;
 import ma.fpbm.fpbmback.service.imple.ModuleServiceImpl;
+import org.hibernate.annotations.common.util.impl.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 @RequestMapping( "module")
 public class ModuleRest {
 
@@ -21,7 +24,7 @@ public class ModuleRest {
         return moduleServiceImple.findAll();
     }
     @GetMapping("/{id}")
-    public Optional<Module> findById(@PathVariable Long id){
+    public Module findById(@PathVariable Long id){
         return moduleServiceImple.findById(id);
     }
 
@@ -35,8 +38,10 @@ public class ModuleRest {
         return moduleServiceImple.deleteById(code);
     }
 
-    @PutMapping
-    public Module update(@RequestBody Module module) {
+    @PutMapping("/{id}")
+    public Module update(@PathVariable Long id,@RequestBody Module module) {
+        module.setId(id);
+        System.out.println(module);
         return moduleServiceImple.update(module);
     }
 

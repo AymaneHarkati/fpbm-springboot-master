@@ -20,7 +20,7 @@ public class Type {
     @Id
     private int id;
     private String nom;
-    @JsonBackReference
+    @JsonBackReference(value = "typeFill")
     @OneToMany(mappedBy = "type")
     private List<Filiere> fillier; // Filler has many type
 

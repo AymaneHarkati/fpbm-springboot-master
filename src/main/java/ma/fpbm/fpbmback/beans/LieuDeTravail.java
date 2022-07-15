@@ -15,6 +15,6 @@ public class LieuDeTravail {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(mappedBy = "idLieuTravail")
-    @JsonBackReference
+    @JsonBackReference(value = "lieuTravail")
     private Collection<Professeur> professeurs;
 }

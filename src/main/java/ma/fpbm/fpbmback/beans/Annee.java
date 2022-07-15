@@ -22,7 +22,7 @@ public class Annee {
     private String annee;
 
     @OneToMany(mappedBy = "annee")
-    @JsonBackReference
+    @JsonBackReference(value = "annee")
     private List<ProfesseurHasModule> professeurHasModules;
 
 

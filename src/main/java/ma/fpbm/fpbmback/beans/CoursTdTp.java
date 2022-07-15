@@ -27,8 +27,7 @@ public class CoursTdTp {
     private String code;
 
     @OneToMany(mappedBy = "coursTdTp")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @JsonBackReference
+    @JsonBackReference(value = "coursTdTp")
     private List<ProfesseurHasModule> professeurHasModules;
 
     private String typeDeResponsabilite;

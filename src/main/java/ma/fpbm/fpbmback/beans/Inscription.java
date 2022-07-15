@@ -17,6 +17,5 @@ public class Inscription {
     private int id;
     private Date dateInscription;
     @ManyToOne
-    @JsonManagedReference
     private PhdEtudiant phdEtudiant;
 }

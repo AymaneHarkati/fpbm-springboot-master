@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface IModule {
 
     List<Module> findAll();
-    Optional<Module> findById(Long id);
+Module findById(Long id);
     Module save (Module module);
     String deleteById (Long code);
     Module update (Module module);

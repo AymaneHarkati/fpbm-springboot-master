@@ -23,7 +23,7 @@ public class CedRest {
     public Optional<Ced> findById(@PathVariable Long id){
         return cedService.findById(id);
     }
-    @PostMapping
+    @PostMapping(consumes = {"application/json"})
     public Ced save(@RequestBody Ced ced) {
         return cedService.save(ced);
     }
@@ -33,8 +33,9 @@ public class CedRest {
         return cedService.deleteByCode(code);
     }
 
-    @PutMapping
-    public Ced update(@RequestBody Ced ced) {
+    @PutMapping("/{id}")
+    public Ced update(@PathVariable Long id, @RequestBody Ced ced) {
+        ced.setIdCed(id);
         return cedService.update(ced);
     }
 }

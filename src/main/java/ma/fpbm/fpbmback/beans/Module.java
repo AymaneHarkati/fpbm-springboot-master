@@ -5,9 +5,11 @@ package ma.fpbm.fpbmback.beans;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.Hibernate;
 import org.hibernate.annotations.Formula;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -22,28 +24,14 @@ import java.util.Set;
 public class Module {
     @Id
     @Column(name = "Module_id")
-    @ToString.Exclude
     private Long id;
-    @ToString.Exclude
     private String groupes;
-
+   private  String name;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
     private Semestre semestre;
-
     @OneToMany(mappedBy = "module")
-    @JsonBackReference
-    @ToString.Exclude
-    private List<ProfesseurHasModule> professeurHasModules;
-    /*
-    @JsonManagedReference
-    @ManyToMany
-    @JoinTable(
-            name = "module_etudiant",
-            joinColumns = @JoinColumn(name = "module_id"),
-            inverseJoinColumns = @JoinColumn(name = "etudiant_id"))
-    Collection<Etudiant> moduleEtud;*/
+    @JsonBackReference(value = "prof")
+    private Collection<ProfesseurHasModule> professeurHasModules;
 
 
 }

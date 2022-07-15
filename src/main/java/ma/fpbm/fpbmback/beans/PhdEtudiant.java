@@ -22,18 +22,17 @@ public class PhdEtudiant extends Personne {
     private String sujet;
 
     @OneToMany(mappedBy = "phdEtudiant")
-    @JsonBackReference
+    @JsonBackReference(value = "phdinsc")
     private List<Inscription> inscription;
 
     //relation avec la table ced
     @ManyToOne
-    @JsonManagedReference
 
     private Ced idCed;
 
     //relation avec la table soutenance
     @OneToMany(mappedBy = "phdEtudiant_sout")
-    @JsonBackReference
+    @JsonBackReference(value = "phdsous")
     private Collection<Soutenance> soutenance;
 
 

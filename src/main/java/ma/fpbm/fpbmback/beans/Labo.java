@@ -15,7 +15,6 @@ public class Labo {
     @Id
     private int id;
     @ManyToOne
-    @JsonManagedReference
 
     private Ced ced;
 }

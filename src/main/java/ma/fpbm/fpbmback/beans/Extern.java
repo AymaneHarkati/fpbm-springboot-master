@@ -17,6 +17,6 @@ public class Extern {
     private Long id;
 
     @OneToMany(mappedBy = "id_extern")
-    @JsonBackReference
+    @JsonBackReference(value = "extern")
     private Collection<Professeur> professeurs;
 }

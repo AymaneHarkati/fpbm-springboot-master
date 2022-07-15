@@ -28,30 +28,28 @@ public class Soutenance {
 
     //Relation oTm avec la table Jury
     @OneToMany(mappedBy = "jury_soutenance")
-    @JsonBackReference
+    @JsonBackReference(value = "jurys")
     private Collection<Jury> jury;
 
     //relation avec la table salle
 
     @ManyToOne
-    @JsonManagedReference
+
     private Salle salle;
 
     //relation avec la table phdStudent
     @ManyToOne
-    @JsonManagedReference
+
 
     private PhdEtudiant phdEtudiant_sout;
 
     //relation avec la table professeur
     @ManyToOne
-    @JsonManagedReference
 
     private Professeur professeur;
 
     //relation avec la table soutenance
     @ManyToOne
-    @JsonManagedReference
     private Salle salle_sout;
 
 

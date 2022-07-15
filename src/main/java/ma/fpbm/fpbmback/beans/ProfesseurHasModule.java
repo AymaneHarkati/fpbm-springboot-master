@@ -20,27 +20,21 @@ import java.util.Collection;
 public class ProfesseurHasModule {
     @Id
     @Column(name = "profModId")
-    @ToString.Exclude
+
     private int id;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
+
     private Annee annee;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
+
     private Professeur professeur;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
+
     private Module module;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
+
     private CoursTdTp coursTdTp;
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
     private Section section;
 
 }

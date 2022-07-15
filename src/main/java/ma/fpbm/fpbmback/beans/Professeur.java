@@ -16,46 +16,37 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor @ToString
 public class Professeur extends Personne {
-    @ToString.Exclude
+
     private String grade;
-    @ToString.Exclude
     private String telephone;
 
 
-    @JsonBackReference
+    @JsonBackReference(value = "profFill")
     @OneToMany(mappedBy = "responsable", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    @ToString.Exclude
     private List<Filiere> fillier;
-    @JsonBackReference
+    @JsonBackReference(value = "profandmod")
     @OneToMany(mappedBy = "professeur")
-    @ToString.Exclude
+
     private List<ProfesseurHasModule> professeurHasModules;
 
-    @JsonBackReference
+    @JsonBackReference(value = "profasjury")
     //relation avec la table jury
     @OneToMany(mappedBy = "professeur")
-    @ToString.Exclude
     private Collection<Jury> jury;
 
-    @JsonManagedReference
     @ManyToOne
-    @ToString.Exclude
     private LieuDeTravail idLieuTravail;
 
 
     @OneToMany(mappedBy = "profSurveillant")
-    @JsonBackReference
-    @ToString.Exclude
+    @JsonBackReference(value = "profassurv")
     private Collection<Surveillant> surveillants;
 
-    @JsonManagedReference
     @ManyToOne
-    @ToString.Exclude
     private Examen id_examen;
-    @JsonManagedReference
+
     @ManyToOne
-    @ToString.Exclude
     private Extern id_extern;
 
 }

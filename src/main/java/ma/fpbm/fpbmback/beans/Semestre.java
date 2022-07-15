@@ -19,16 +19,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Semestre {
-    @Id @ToString.Exclude
+    @Id
     private int id;
-    @ToString.Exclude
     private String name_semester;
-    @JsonManagedReference
-    @ToString.Exclude
     @ManyToOne
     private Filiere fillier_id;
-    @ToString.Exclude
-    @JsonBackReference
+    @JsonBackReference(value = "moodule")
     @OneToMany(mappedBy = "semestre")
     private List<Module> module;
 

@@ -14,10 +14,8 @@ public class ExamenHasProfesseurHasModuleHasEtudiant {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "id_exam")
-    @JsonManagedReference
     private Examen examen;
     @ManyToOne
     @JoinColumn(name = "professeur_has_module_has_etudiant")
-    @JsonManagedReference
     private ProfesseurHasModuleHasEtudiant professeurHasModuleHasEtudiant;
 }

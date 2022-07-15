@@ -16,36 +16,27 @@ import java.util.Collection;
 @NoArgsConstructor @AllArgsConstructor @ToString
 public class Examen {
     @Id @GeneratedValue
-    @ToString.Exclude
     private Long id;
 
-    @ToString.Exclude
     @Column
     private String jour;
 
     @Column
-    @ToString.Exclude
     private String heure;
 
 
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
     private Salle salle;
 
     @ManyToOne
-    @JsonManagedReference
-    @ToString.Exclude
     private ProfesseurHasModule profHasModule;
 
     @OneToMany(mappedBy = "id_examen")
-    @JsonBackReference
-    @ToString.Exclude
+    @JsonBackReference(value = "surveillants")
     private Collection<Surveillant> surveillants;
 
     @OneToMany(mappedBy = "examen")
-    @JsonBackReference
-    @ToString.Exclude
+    @JsonBackReference(value = "examenProfModEtd")
     private Collection<ExamenHasProfesseurHasModuleHasEtudiant> examenProfModEtd;
 
 }

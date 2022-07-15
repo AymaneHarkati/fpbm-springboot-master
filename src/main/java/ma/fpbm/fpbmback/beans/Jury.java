@@ -17,19 +17,17 @@ public class Jury {
 
     //relation Many To One avec la table professeur
     @ManyToOne
-    @JsonManagedReference
 
     private Professeur professeur;
 
     //relation Many To One avec la table soutenance
     @ManyToOne
-    @JsonManagedReference
+
 
     private Soutenance jury_soutenance;
 
     //relation Many To One avec la table Type jury
     @ManyToOne
-    @JsonManagedReference
 
     private TypeJury typeJury;
 

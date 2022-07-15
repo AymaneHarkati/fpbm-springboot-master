@@ -18,10 +18,12 @@ public class SurveillantRest {
     public List<Surveillant> findAll() {
         return surveillantService.findAll();
     }
+
     @GetMapping("/{id}")
-    public Optional<Surveillant> findById(@PathVariable Long id){
+    public Optional<Surveillant> findById(@PathVariable Long id) {
         return surveillantService.findById(id);
     }
+
     @PostMapping
     public Surveillant save(@RequestBody Surveillant surveillant) {
         return surveillantService.save(surveillant);

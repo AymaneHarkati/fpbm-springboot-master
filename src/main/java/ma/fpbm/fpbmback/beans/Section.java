@@ -17,13 +17,13 @@ import java.util.List;
 public class Section {
     @Id
     @Column(name = "sectionId")
-    @ToString.Exclude
+
     private Long id;
-    @ToString.Exclude
+
     private String name;
-    @ToString.Exclude
+
     @OneToMany(mappedBy = "section", fetch = FetchType.LAZY)
-    @JsonBackReference
+    @JsonBackReference(value = "prof/mod")
     private List<ProfesseurHasModule> professeurHasModules;
 
 }
