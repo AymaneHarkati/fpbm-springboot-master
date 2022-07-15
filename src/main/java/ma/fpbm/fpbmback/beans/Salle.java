@@ -1,6 +1,8 @@
 package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,31 +15,52 @@ import java.util.Objects;
 @Entity
 @Data
 @AllArgsConstructor @NoArgsConstructor
+
 public class Salle {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @ToString.Exclude
     private String code;
+
     @ToString.Exclude
     private String name;
+
     @ToString.Exclude
     private Integer capacity;
+
     @ToString.Exclude
     private Integer capacityExam;
+
     @ToString.Exclude
     private Integer nombreDeSurveillant;
+
+    @JsonIgnore
     @ToString.Exclude
-    @JsonBackReference
+    @JsonBackReference(value = "exam")
     @OneToMany(mappedBy = "salle")
     private Collection<Examen> examen;
+
+    @JsonIgnore
     @ToString.Exclude
-    @JsonBackReference
+    @JsonBackReference(value = "soutenances")
     @OneToMany(mappedBy = "salle_sout")
     private Collection<Soutenance> soutenances;
 
+    @JsonBackReference(value = "exam")
+    public Collection<Examen> getExamen() {
+        return examen;
+    }
 
 
+    @JsonBackReference(value = "soutenances")
+    public Collection<Soutenance> getSoutenances() {
+        return soutenances;
+    }
+
+
+    /*
     public void setId(Long id) {
         this.id = id;
     }
@@ -89,5 +112,5 @@ public class Salle {
     @Override
     public int hashCode() {
         return Objects.hash(name, capacity, nombreDeSurveillant);
-    }
+    }*/
 }

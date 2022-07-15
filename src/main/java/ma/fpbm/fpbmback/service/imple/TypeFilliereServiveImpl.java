@@ -46,6 +46,11 @@ public class TypeFilliereServiveImpl implements ITypeFillire {
         return "Error while deleting departement";
     }
 
+    @Override
+    public TypeFiliere findById(Long idTpFlr){
+        return typeFilliereRepository.findById(idTpFlr).orElseThrow();
+    }
+
 
 
 

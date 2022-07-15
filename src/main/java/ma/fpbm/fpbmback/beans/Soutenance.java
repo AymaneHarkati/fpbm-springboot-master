@@ -1,6 +1,7 @@
 package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,9 +32,9 @@ public class Soutenance {
     private Collection<Jury> jury;
 
     //relation avec la table salle
+
     @ManyToOne
     @JsonManagedReference
-
     private Salle salle;
 
     //relation avec la table phdStudent
@@ -52,6 +53,7 @@ public class Soutenance {
     @ManyToOne
     @JsonManagedReference
     private Salle salle_sout;
+
 
 
 }

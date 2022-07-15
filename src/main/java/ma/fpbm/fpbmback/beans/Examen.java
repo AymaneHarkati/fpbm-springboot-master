@@ -18,6 +18,7 @@ public class Examen {
     @Id @GeneratedValue
     @ToString.Exclude
     private Long id;
+
     @ToString.Exclude
     @Column
     private String jour;
@@ -25,11 +26,12 @@ public class Examen {
     @Column
     @ToString.Exclude
     private String heure;
+
+
     @ManyToOne
     @JsonManagedReference
     @ToString.Exclude
     private Salle salle;
-
 
     @ManyToOne
     @JsonManagedReference
@@ -40,6 +42,7 @@ public class Examen {
     @JsonBackReference
     @ToString.Exclude
     private Collection<Surveillant> surveillants;
+
     @OneToMany(mappedBy = "examen")
     @JsonBackReference
     @ToString.Exclude

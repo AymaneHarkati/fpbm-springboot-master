@@ -30,8 +30,9 @@ public class TypeFilliereRest {
 
     @PutMapping("/{idTpFlr}")
     public TypeFiliere updateEquipe(@PathVariable Long idTpFlr,@RequestBody TypeFiliere typeFiliere){
-        typeFiliere.setCode(typeFiliere.getCode());
-        typeFiliere.setName(typeFiliere.getName());
+        TypeFiliere toUp = typeFilliereServive.findById(idTpFlr);
+        toUp.setCode(typeFiliere.getCode());
+        toUp.setName(typeFiliere.getName());
         return typeFilliereServive.saveTpFilliere(typeFiliere);
     }
 

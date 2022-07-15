@@ -15,6 +15,5 @@ public class Equipe {
     private Long idEquipe;
     @ManyToOne
     @JsonManagedReference
-
     private Ced idCed;
 }
