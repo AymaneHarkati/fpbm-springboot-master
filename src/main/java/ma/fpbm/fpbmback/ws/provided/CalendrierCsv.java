@@ -7,20 +7,10 @@ import ma.fpbm.fpbmback.service.imple.ProfesseurModuleEtudiantServiceImpl;
 import ma.fpbm.fpbmback.toExcel.ExcelExportCalendar;
 import ma.fpbm.fpbmback.toExcel.ExcelExportEtudModule;
 import ma.fpbm.fpbmback.toExcel.ExcelExportModuleWithEffectif;
-import ma.fpbm.fpbmback.toExcel.ToExcel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-import org.supercsv.io.CsvBeanWriter;
-import org.supercsv.io.ICsvBeanWriter;
-import org.supercsv.prefs.CsvPreference;
-
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 

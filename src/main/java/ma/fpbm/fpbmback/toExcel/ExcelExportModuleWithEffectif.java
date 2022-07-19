@@ -47,14 +47,14 @@ public class ExcelExportModuleWithEffectif extends AbstractXlsView {
         for(Examen spec : module) {
             Row row = sheet.createRow(rowNum++);
             row.createCell(0).setCellValue(spec.getProfHasModule().getModule().getId());
-            row.createCell(1).setCellValue(spec.getProfHasModule().getModule().getGroupes());
+            row.createCell(1).setCellValue(spec.getProfHasModule().getModule().getName());
             row.createCell(2).setCellValue(spec.getProfHasModule().getModule().getSemestre().getName_semester());
             row.createCell(3).setCellValue(spec.getProfHasModule().getModule().getSemestre().getFillier_id().getName());
             row.createCell(4).setCellValue(spec.getProfHasModule().getSection().getName());
             int countEff = 0;
             //countEffectif
             for(ProfesseurHasModuleHasEtudiant temp:listModule){
-                if(spec.getProfHasModule().getModule().getGroupes().equals(temp.getProfesseurHasModule_id().getModule().getGroupes()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
+                if(spec.getProfHasModule().getModule().getName().equals(temp.getProfesseurHasModule_id().getModule().getName()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
                     countEff++;
                 }
             }

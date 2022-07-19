@@ -28,7 +28,7 @@ public class ProfesseurModuleEtudiantServiceImpl implements ProfesseurModuleEtud
         int countEff = 0;
         List<ProfesseurHasModuleHasEtudiant> list = professeurModuleEtudiantRepository.findAll();
         for(ProfesseurHasModuleHasEtudiant temp:list){
-         if(nomModule.equals(temp.getProfesseurHasModule_id().getModule().getGroupes()) && section.equals(temp.getProfesseurHasModule_id().getSection().getName())){
+         if(nomModule.equals(temp.getProfesseurHasModule_id().getModule().getName()) && section.equals(temp.getProfesseurHasModule_id().getSection().getName())){
              countEff++;
          }
          System.out.println(temp.getProfesseurHasModule_id().getModule().getGroupes().getClass());

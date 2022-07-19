@@ -55,7 +55,7 @@ public class ExcelExportEtudModule extends AbstractXlsView {
             row.createCell(3).setCellValue(spec.getIdEtudiant().getPrenom());
             row.createCell(4).setCellValue(spec.getIdEtudiant().getDateNaissance());
             row.createCell(5).setCellValue(spec.getIdEtudiant().getCin());
-            row.createCell(6).setCellValue(spec.getProfesseurHasModule_id().getModule().getGroupes());
+            row.createCell(6).setCellValue(spec.getProfesseurHasModule_id().getModule().getName());
             row.createCell(7).setCellValue(spec.getProfesseurHasModule_id().getSection().getName());
             row.createCell(8).setCellValue(spec.getProfesseurHasModule_id().getModule().getSemestre().getName_semester());
             row.createCell(9).setCellValue(spec.getProfesseurHasModule_id().getModule().getSemestre().getFillier_id().getName());

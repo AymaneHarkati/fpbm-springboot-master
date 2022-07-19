@@ -59,11 +59,11 @@ public class ExcelExportCalendar extends AbstractXlsView {
             row.createCell(3).setCellValue(spec.getSalle().getName());
             row.createCell(4).setCellValue(spec.getProfHasModule().getSection().getName());
             row.createCell(5).setCellValue(spec.getProfHasModule().getModule().getSemestre().getName_semester());
-            row.createCell(6).setCellValue(spec.getProfHasModule().getModule().getGroupes());
+            row.createCell(6).setCellValue(spec.getProfHasModule().getModule().getName());
             int countEff = 0;
             //countEffectif
             for(ProfesseurHasModuleHasEtudiant temp:listModule){
-                if(spec.getProfHasModule().getModule().getGroupes().equals(temp.getProfesseurHasModule_id().getModule().getGroupes()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
+                if(spec.getProfHasModule().getModule().getName().equals(temp.getProfesseurHasModule_id().getModule().getName()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
                     countEff++;
                 }
             }

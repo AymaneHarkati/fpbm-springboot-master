@@ -32,7 +32,7 @@ public class DepartementRest {
     }
 
     @PutMapping
-    public Departement update(@RequestBody Departement departement) {
+    public Departement update(@RequestBody Departement departement)  {
         return departementService.update(departement);
     }
 }
