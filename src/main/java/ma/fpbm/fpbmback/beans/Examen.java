@@ -25,6 +25,7 @@ public class Examen {
     private String heure;
 
 
+
     @ManyToOne
     private Salle salle;
 

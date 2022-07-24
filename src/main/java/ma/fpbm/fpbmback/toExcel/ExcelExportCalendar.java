@@ -16,7 +16,25 @@ import org.springframework.web.servlet.view.document.AbstractXlsView;
 
 
 
+
 public class ExcelExportCalendar extends AbstractXlsView {
+    private int test;
+
+    public Examen checkSameExam(Examen examen,List<Examen> examenList){
+        this.test = 0;
+        for (Examen spec:examenList){
+            if(spec.getProfHasModule().getModule().getCodeModule().equals(examen.getProfHasModule().getModule().getCodeModule())
+                    && !spec.getId().toString().equals(examen.getId().toString())
+                    && spec.getProfHasModule().getSection().getName().equals(examen.getProfHasModule().getSection().getName())
+                    && spec.getId() < examen.getId()){
+                System.out.println(spec.getId().toString());
+                return spec;
+            }
+            this.test += 1;
+        }
+        return null;
+    }
+
 
 
     @Override
@@ -52,22 +70,64 @@ public class ExcelExportCalendar extends AbstractXlsView {
         // create row1 onwards from List<T>
         int rowNum = 1;
         for(Examen spec : list) {
-            Row row = sheet.createRow(rowNum++);
-            row.createCell(0).setCellValue(spec.getId());
-            row.createCell(1).setCellValue(spec.getJour());
-            row.createCell(2).setCellValue(spec.getHeure());
-            row.createCell(3).setCellValue(spec.getSalle().getName());
-            row.createCell(4).setCellValue(spec.getProfHasModule().getSection().getName());
-            row.createCell(5).setCellValue(spec.getProfHasModule().getModule().getSemestre().getName_semester());
-            row.createCell(6).setCellValue(spec.getProfHasModule().getModule().getName());
-            int countEff = 0;
-            //countEffectif
-            for(ProfesseurHasModuleHasEtudiant temp:listModule){
-                if(spec.getProfHasModule().getModule().getName().equals(temp.getProfesseurHasModule_id().getModule().getName()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
-                    countEff++;
+            if ( checkSameExam(spec,list) == null){
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(spec.getProfHasModule().getModule().getCodeModule());
+                row.createCell(1).setCellValue(spec.getJour());
+                row.createCell(2).setCellValue(spec.getHeure());
+                row.createCell(3).setCellValue(spec.getSalle().getName());
+                row.createCell(4).setCellValue(spec.getProfHasModule().getSection().getName());
+                row.createCell(5).setCellValue(spec.getProfHasModule().getModule().getSemestre().getName_semester());
+                row.createCell(6).setCellValue(spec.getProfHasModule().getModule().getName());
+                int countEff = 0;
+                //countEffectif
+                for(ProfesseurHasModuleHasEtudiant temp:listModule){
+                    if(spec.getProfHasModule().getModule().getName().equals(temp.getProfesseurHasModule_id().getModule().getName()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
+                        countEff++;
+                    }
+                }
+                row.createCell(7).setCellValue(countEff);
+            }else {
+                //pour ajouter la salle #concatenation
+                for(Row row : sheet){
+                    if(spec.getProfHasModule().getModule().getCodeModule().equals(row.getCell(0).getStringCellValue())
+                            && spec.getProfHasModule().getSection().getName().equals(row.getCell(4).getStringCellValue())
+                    ){
+                        row.getCell(3).setCellValue(row.getCell(3).getStringCellValue() + "+" + spec.getSalle().getName());
+                    }
                 }
             }
-            row.createCell(7).setCellValue(countEff);
+            /*
+            for(Examen spec1 : list){
+
+                if ((spec1.getJour().equals(spec.getJour()) && spec1.getHeure().equals(spec.getHeure()) && spec1.getProfHasModule().equals(spec.getProfHasModule())) && !spec.getId().toString().equals(spec1.getId().toString())) {
+                    Row rowTemp = sheet.getRow(0);
+                    System.out.println(spec.getId().intValue());
+                    rowTemp.getCell(3).setCellValue(rowTemp.getCell(3).getStringCellValue() + "+" +spec1.getSalle().getName());
+                    this.test = true;
+                    break;
+                }else {
+                    Row row = sheet.createRow(rowNum++);
+                    row.createCell(0).setCellValue(spec.getId());
+                    row.createCell(1).setCellValue(spec.getJour());
+                    row.createCell(2).setCellValue(spec.getHeure());
+                    row.createCell(3).setCellValue(spec.getSalle().getName());
+                    row.createCell(4).setCellValue(spec.getProfHasModule().getSection().getName());
+                    row.createCell(5).setCellValue(spec.getProfHasModule().getModule().getSemestre().getName_semester());
+                    row.createCell(6).setCellValue(spec.getProfHasModule().getModule().getName());
+                    int countEff = 0;
+                    //countEffectif
+                    for(ProfesseurHasModuleHasEtudiant temp:listModule){
+                        if(spec.getProfHasModule().getModule().getName().equals(temp.getProfesseurHasModule_id().getModule().getName()) && spec.getProfHasModule().getSection().getName().equals(temp.getProfesseurHasModule_id().getSection().getName())){
+                            countEff++;
+                        }
+                    }
+                    row.createCell(7).setCellValue(countEff);
+                }
+                }*/
+
         }
+
     }
+
 }

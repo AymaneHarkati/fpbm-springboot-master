@@ -25,8 +25,9 @@ public class Module {
     @Id
     @Column(name = "Module_id")
     private Long id;
+    private String codeModule;
     private String groupes;
-   private  String name;
+    private  String name;
     @ManyToOne
     private Semestre semestre;
     @OneToMany(mappedBy = "module")
