@@ -5,6 +5,7 @@ import ma.fpbm.fpbmback.beans.Module;
 import ma.fpbm.fpbmback.service.imple.ModuleServiceImpl;
 import org.hibernate.annotations.common.util.impl.Log;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
 @RequestMapping( "module")
 public class ModuleRest {
 
@@ -20,8 +20,9 @@ public class ModuleRest {
     private ModuleServiceImpl moduleServiceImple;
 
     @GetMapping
-    public List<Module> findAll() {
-        return moduleServiceImple.findAll();
+    public Page<Module> findAll(@RequestParam(name="page",defaultValue = "0") int page,
+                                @RequestParam(name="size",defaultValue = "5") int size) {
+        return moduleServiceImple.findAll(page,size);
     }
     @GetMapping("/{id}")
     public Module findById(@PathVariable Long id){
