@@ -44,9 +44,6 @@ public class Professeur extends Personne {
     private Collection<Surveillant> surveillants;
 
     @ManyToOne
-    private Examen id_examen;
-
-    @ManyToOne
     private Extern id_extern;
 
 }

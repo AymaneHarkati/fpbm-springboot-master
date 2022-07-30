@@ -1,16 +1,11 @@
 package ma.fpbm.fpbmback.beans;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jdk.jfr.DataAmount;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity(name = "professeur_has_module")
 @Data
@@ -21,7 +16,7 @@ public class ProfesseurHasModule {
     @Id
     @Column(name = "profModId")
 
-    private int id;
+    private Long id;
     @ManyToOne
 
     private Annee annee;

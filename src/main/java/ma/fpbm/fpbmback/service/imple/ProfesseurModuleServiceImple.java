@@ -4,6 +4,9 @@ import ma.fpbm.fpbmback.beans.ProfesseurHasModule;
 import ma.fpbm.fpbmback.repository.ProfesseurModuleRepository;
 import ma.fpbm.fpbmback.service.facade.ProfesseurModuleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +18,10 @@ public class ProfesseurModuleServiceImple implements ProfesseurModuleService {
     private ProfesseurModuleRepository professeurModuleRepository;
 
     @Override
-    public List<ProfesseurHasModule> findAll() {
-        return professeurModuleRepository.findAll();
+    public Page<ProfesseurHasModule> findAll(int pageNo, int pageSize) {
+
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        return professeurModuleRepository.findAll(paging);
     }
 
     @Override

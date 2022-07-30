@@ -28,6 +28,11 @@ public class ModuleServiceImpl implements IModule {
     }
 
     @Override
+    public List<Module> findAll() {
+        return moduleRepository.findAll();
+    }
+
+    @Override
     public Module findById(Long id) {
         return moduleRepository.findById(id).orElse(null);
 

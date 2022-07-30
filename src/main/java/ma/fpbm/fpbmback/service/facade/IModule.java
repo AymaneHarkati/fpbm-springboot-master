@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface IModule {
 
     Page<Module> findAll(int pageNo, int pageSize);
+    List<Module> findAll();
 Module findById(Long id);
     Module save (Module module);
     String deleteById (Long code);

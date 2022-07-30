@@ -24,6 +24,10 @@ public class ModuleRest {
                                 @RequestParam(name="size",defaultValue = "5") int size) {
         return moduleServiceImple.findAll(page,size);
     }
+    @GetMapping("all")
+    public List<Module> findAll() {
+        return moduleServiceImple.findAll();
+    }
     @GetMapping("/{id}")
     public Module findById(@PathVariable Long id){
         return moduleServiceImple.findById(id);
@@ -42,7 +46,6 @@ public class ModuleRest {
     @PutMapping("/{id}")
     public Module update(@PathVariable Long id,@RequestBody Module module) {
         module.setId(id);
-        System.out.println(module);
         return moduleServiceImple.update(module);
     }
 
