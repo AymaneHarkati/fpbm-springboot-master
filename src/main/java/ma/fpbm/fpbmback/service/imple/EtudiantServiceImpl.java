@@ -4,6 +4,9 @@ import ma.fpbm.fpbmback.beans.Etudiant;
 import ma.fpbm.fpbmback.repository.EtudiantRepository;
 import ma.fpbm.fpbmback.service.facade.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,5 +41,11 @@ public class EtudiantServiceImpl implements EtudiantService {
     public String update(Etudiant etudiant) {
         etudiantRepository.save(etudiant);
         return "Updated";
+    }
+
+    @Override
+    public Page<Etudiant> getByPage(int page, int size) {
+        Pageable paging = PageRequest.of(page, size);
+        return etudiantRepository.findAll(paging);
     }
 }

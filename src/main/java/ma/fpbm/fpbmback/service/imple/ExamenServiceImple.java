@@ -4,6 +4,9 @@ import ma.fpbm.fpbmback.beans.Examen;
 import ma.fpbm.fpbmback.repository.ExamenRepository;
 import ma.fpbm.fpbmback.service.facade.ExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,14 +22,18 @@ public class ExamenServiceImple implements ExamenService {
     }
 
     @Override
+    public Page<Examen> findByPage(int page, int size) {
+        Pageable paging = PageRequest.of(page, size);
+        return examenRepository.findAll(paging);
+    }
+
+    @Override
     public Examen save(Examen examen) {
         // validate the input data :
 
         // validate the DB data;
 
-        examenRepository.save(examen);
-
-        return null;
+        return examenRepository.save(examen);
     }
 
     @Override
@@ -37,7 +44,7 @@ public class ExamenServiceImple implements ExamenService {
 
     @Override
     public Examen update(Examen examen) {
-        return null;
+        return examenRepository.save(examen);
     }
 
     @Override
