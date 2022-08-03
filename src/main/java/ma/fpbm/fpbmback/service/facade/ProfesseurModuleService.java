@@ -9,6 +9,7 @@ import java.util.Optional;
 
 public interface ProfesseurModuleService {
     Page<ProfesseurHasModule> findAll(int page, int size);
+    List<ProfesseurHasModule> findAll();
     Optional<ProfesseurHasModule> findById(Long id);
     ProfesseurHasModule save (ProfesseurHasModule professeurHasModule);
     void deleteByCode (long id);
