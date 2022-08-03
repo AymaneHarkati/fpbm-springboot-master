@@ -14,6 +14,7 @@ import java.util.List;
 @RequestMapping("profmodetud")
 public class ProfesseurModuleEtudiantRest {
 
+
     @Autowired
     private ProfesseurModuleEtudiantServiceImpl professeurModuleEtudiantService;
 

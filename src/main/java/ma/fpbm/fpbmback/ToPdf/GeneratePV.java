@@ -2,14 +2,12 @@ package ma.fpbm.fpbmback.ToPdf;
 
 
 import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.List;
 
-
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.zxing.WriterException;
@@ -17,18 +15,24 @@ import com.lowagie.text.*;
 import com.lowagie.text.pdf.*;
 import ma.fpbm.fpbmback.beans.Examen;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import ma.fpbm.fpbmback.beans.ExamenHasProfesseurHasModuleHasEtudiant;
+
 
 
 
 public class GeneratePV{
+    private int test;
+    private List<ExamenHasProfesseurHasModuleHasEtudiant> list;
 
-    @Autowired
-    private GenerateQrCode generateQrCode;
+
+
     private Examen exam;
 
-    public GeneratePV(Examen examen) {
+
+
+    public GeneratePV(Examen examen,List<ExamenHasProfesseurHasModuleHasEtudiant> list) {
         this.exam = examen;
+        this.list=list;
     }
 
     private void writeTableHeaderForSurveillants(PdfPTable table) {
@@ -67,21 +71,23 @@ public class GeneratePV{
         Font font = FontFactory.getFont(FontFactory.HELVETICA);
         font.setColor(Color.WHITE);
 
-        cell.setPhrase(new Phrase("User ID", font));
+        cell.setPhrase(new Phrase("N°Ord", font));
 
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("E-mail", font));
+
+        cell.setPhrase(new Phrase("Apogee", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Full Name", font));
+        cell.setPhrase(new Phrase("CNE", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Roles", font));
+        cell.setPhrase(new Phrase("Prénom", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Enabled", font));
+        cell.setPhrase(new Phrase("Nom", font));
         table.addCell(cell);
+
     }
     /*
     private void writeTableData(PdfPTable table) {
@@ -93,6 +99,21 @@ public class GeneratePV{
             table.addCell(String.valueOf(user.isEnabled()));
         }
     }*/
+
+    private void writeTableData(PdfPTable table) {
+        int cmpt =0;
+
+        for(ExamenHasProfesseurHasModuleHasEtudiant spec:list){
+            if(exam.getId().toString().equals(spec.getExamen().getId().toString())){
+                cmpt++;
+                table.addCell(String.valueOf(cmpt));
+                table.addCell(spec.getProfesseurHasModuleHasEtudiant().getIdEtudiant().getCode());
+                table.addCell(spec.getProfesseurHasModuleHasEtudiant().getIdEtudiant().getCne());
+                table.addCell(spec.getProfesseurHasModuleHasEtudiant().getIdEtudiant().getNom());
+                table.addCell(spec.getProfesseurHasModuleHasEtudiant().getIdEtudiant().getPrenom());
+            }
+        }
+    }
 
     public void export(HttpServletResponse response) throws DocumentException, IOException, WriterException {
         Document document = new Document(PageSize.A4);
@@ -170,6 +191,17 @@ public class GeneratePV{
 
         //<------ space ----->
         document.add(space);
+        //table des etudiant
+        document.newPage();
+        PdfPTable tableEtud = new PdfPTable(5);
+        tableEtud.setWidthPercentage(100f);
+        //SUm = 12,5
+        tableEtud.setWidths(new float[]{2f,2.5f,2f,3f,3f});
+        tableEtud.setSpacingBefore(10);
+        writeTableHeader(tableEtud);
+
+        writeTableData(tableEtud);
+        document.add(tableEtud);
 
         document.close();
 
