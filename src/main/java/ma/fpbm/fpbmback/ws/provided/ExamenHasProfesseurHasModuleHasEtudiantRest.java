@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/examprofmodetud")
+@RequestMapping("examprofmodetud")
 public class ExamenHasProfesseurHasModuleHasEtudiantRest {
     @Autowired
     private ExamenHasProfesseurHasModuleHasEtudiantImple examenHasProfesseurHasModuleHasEtudiantImple;
