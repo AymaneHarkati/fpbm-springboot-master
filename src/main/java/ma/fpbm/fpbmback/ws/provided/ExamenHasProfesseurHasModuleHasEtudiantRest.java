@@ -50,4 +50,8 @@ public class ExamenHasProfesseurHasModuleHasEtudiantRest {
         return examenHasProfesseurHasModuleHasEtudiantImple.update(profMod);
     }
 
+    @GetMapping("/count/{idExamen}")
+    public int countEffectif(@PathVariable int idExamen){
+        return examenHasProfesseurHasModuleHasEtudiantImple.countEffectif(idExamen);
+    }
 }

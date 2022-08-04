@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @Service
 public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasProfesseurHasModuleHasEtudiantImpl {
+    public int count = 0;
     @Autowired
     private ExamenHasProfesseurHasModuleHasEtudiantRepository examenHasProfesseurHasModuleHasEtudiantRepository;
 
@@ -48,6 +49,18 @@ public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasPr
     @Override
     public ExamenHasProfesseurHasModuleHasEtudiant update(ExamenHasProfesseurHasModuleHasEtudiant examenHasProfesseurHasModuleHasEtudiant) {
         return null;
+    }
+
+    @Override
+    public int countEffectif(int idExamen){
+        this.count = 0;
+        List<ExamenHasProfesseurHasModuleHasEtudiant> temp = examenHasProfesseurHasModuleHasEtudiantRepository.findAll();
+        for(ExamenHasProfesseurHasModuleHasEtudiant spec:temp){
+            if (spec.getExamen().getId() == idExamen){
+                this.count++;
+            }
+        }
+        return this.count;
     }
 }
 

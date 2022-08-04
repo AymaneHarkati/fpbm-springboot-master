@@ -14,4 +14,6 @@ public interface ExamenHasProfesseurHasModuleHasEtudiantImpl {
     ExamenHasProfesseurHasModuleHasEtudiant save(ExamenHasProfesseurHasModuleHasEtudiant professeurHasModule);
     void deleteByCode (long id);
     ExamenHasProfesseurHasModuleHasEtudiant update (ExamenHasProfesseurHasModuleHasEtudiant professeurHasModule);
+
+    int countEffectif(int idExament);
 }
