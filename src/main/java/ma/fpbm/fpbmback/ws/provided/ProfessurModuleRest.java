@@ -21,7 +21,10 @@ public class ProfessurModuleRest {
                                              @RequestParam(name="size",defaultValue = "5") int size) {
         return professurModuleService.findAll(page, size);
     }
-
+    @GetMapping("/all")
+    public List<ProfesseurHasModule> findAll(){
+        return professurModuleService.findAll();
+    }
     @GetMapping("/{id}")
     public Optional<ProfesseurHasModule> findById(@PathVariable Long id){
         return professurModuleService.findById(id);

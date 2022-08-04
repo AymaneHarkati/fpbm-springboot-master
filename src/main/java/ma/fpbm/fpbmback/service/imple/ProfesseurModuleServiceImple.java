@@ -25,6 +25,11 @@ public class ProfesseurModuleServiceImple implements ProfesseurModuleService {
     }
 
     @Override
+    public List<ProfesseurHasModule> findAll() {
+        return professeurModuleRepository.findAll();
+    }
+
+    @Override
     public Optional<ProfesseurHasModule> findById(Long id) {
         return professeurModuleRepository.findById(id);
     }

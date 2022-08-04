@@ -18,12 +18,12 @@ public class ExamenHasProfesseurHasModuleHasEtudiantRest {
     private ExamenHasProfesseurHasModuleHasEtudiantImple examenHasProfesseurHasModuleHasEtudiantImple;
 
     //used in generate PV
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<ExamenHasProfesseurHasModuleHasEtudiant> getAll(){
         return examenHasProfesseurHasModuleHasEtudiantImple.getAll();
     }
 
-    @GetMapping("/all")
+    @GetMapping
     public Page<ExamenHasProfesseurHasModuleHasEtudiant> findAll(@RequestParam(name="page",defaultValue = "0") int page,
                                              @RequestParam(name="size",defaultValue = "5") int size) {
         return examenHasProfesseurHasModuleHasEtudiantImple.findAll(page, size);
