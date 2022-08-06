@@ -50,16 +50,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
-        http.authorizeHttpRequests().anyRequest().permitAll();*/
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.csrf().disable();
         http.headers().frameOptions().disable();
-        //http.formLogin();
         http.authorizeRequests().antMatchers("/refreshToken/**").permitAll();
-        http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/**").hasAuthority("ADMIN");
+        //http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/**").hasAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
         http.addFilterBefore(new JwtAuthorizationFiler(), UsernamePasswordAuthenticationFilter.class);
