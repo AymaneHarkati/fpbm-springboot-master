@@ -46,6 +46,6 @@ public class ProfesseurModuleServiceImple implements ProfesseurModuleService {
 
     @Override
     public ProfesseurHasModule update(ProfesseurHasModule professeurHasModule) {
-        return null;
+        return professeurModuleRepository.save(professeurHasModule);
     }
 }

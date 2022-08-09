@@ -23,7 +23,7 @@ public class FpbmbackApplication {
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    /*
+
     @Bean
     CommandLineRunner start(AccountService accountService){
         return args -> {
@@ -44,6 +44,6 @@ public class FpbmbackApplication {
 
 
         };
-    }*/
+    }
 
 }
