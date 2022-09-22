@@ -1,19 +1,15 @@
 package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
-import org.hibernate.query.criteria.internal.expression.function.AggregationFunction;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity @Data
-@NoArgsConstructor @AllArgsConstructor @ToString
+@NoArgsConstructor @AllArgsConstructor
 public class Examen {
     @Id @GeneratedValue
     private Long id;
@@ -29,7 +25,7 @@ public class Examen {
     @ManyToOne
     private Salle salle;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private ProfesseurHasModule profHasModule;
 
     @OneToMany(mappedBy = "id_examen")

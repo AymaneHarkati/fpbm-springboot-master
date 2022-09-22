@@ -1,8 +1,9 @@
 package ma.fpbm.fpbmback.service.imple;
 
-import ma.fpbm.fpbmback.beans.ExamenHasProfesseurHasModuleHasEtudiant;
-import ma.fpbm.fpbmback.beans.ProfesseurHasModule;
+import ma.fpbm.fpbmback.beans.*;
 import ma.fpbm.fpbmback.repository.ExamenHasProfesseurHasModuleHasEtudiantRepository;
+import ma.fpbm.fpbmback.repository.ExamenRepository;
+import ma.fpbm.fpbmback.repository.ProfesseurModuleEtudiantRepository;
 import ma.fpbm.fpbmback.service.facade.ExamenHasProfesseurHasModuleHasEtudiantImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,10 @@ import java.util.Optional;
 public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasProfesseurHasModuleHasEtudiantImpl {
     @Autowired
     private ExamenHasProfesseurHasModuleHasEtudiantRepository examenHasProfesseurHasModuleHasEtudiantRepository;
-
+    @Autowired
+    private ExamenRepository examenRepository;
+    @Autowired
+    private ProfesseurModuleEtudiantRepository professeurHasEtudiantRepository;
     @Override
     public List<ExamenHasProfesseurHasModuleHasEtudiant> getAll(){
         return examenHasProfesseurHasModuleHasEtudiantRepository.findAll();
@@ -37,6 +41,10 @@ public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasPr
 
     @Override
     public ExamenHasProfesseurHasModuleHasEtudiant save(ExamenHasProfesseurHasModuleHasEtudiant examenHasProfesseurHasModuleHasEtudiant) {
+        if (foreignExam(examenHasProfesseurHasModuleHasEtudiant).isEmpty() || foreignPHME(examenHasProfesseurHasModuleHasEtudiant).isEmpty()){
+            System.out.println("ProfesseurHasModuleHasEtudiant or Examen does not exist");
+            return null;
+        }
         return examenHasProfesseurHasModuleHasEtudiantRepository.save(examenHasProfesseurHasModuleHasEtudiant);
     }
 
@@ -47,6 +55,10 @@ public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasPr
 
     @Override
     public ExamenHasProfesseurHasModuleHasEtudiant update(ExamenHasProfesseurHasModuleHasEtudiant examenHasProfesseurHasModuleHasEtudiant) {
+        if (foreignExam(examenHasProfesseurHasModuleHasEtudiant).isEmpty() || foreignPHME(examenHasProfesseurHasModuleHasEtudiant).isEmpty()){
+            System.out.println("ProfesseurHasModuleHasEtudiant or Examen does not exist");
+            return null;
+        }
         return examenHasProfesseurHasModuleHasEtudiantRepository.save(examenHasProfesseurHasModuleHasEtudiant);
     }
 
@@ -60,6 +72,13 @@ public class ExamenHasProfesseurHasModuleHasEtudiantImple implements ExamenHasPr
             }
         }
         return count;
+    }
+
+    private Optional<Examen> foreignExam(ExamenHasProfesseurHasModuleHasEtudiant ehpm){
+        return this.examenRepository.findById(ehpm.getExamen().getId());
+    }
+    private Optional<ProfesseurHasModuleHasEtudiant> foreignPHME(ExamenHasProfesseurHasModuleHasEtudiant ehpm){
+        return  this.professeurHasEtudiantRepository.findById(ehpm.getProfesseurHasModuleHasEtudiant().getId());
     }
 }
 

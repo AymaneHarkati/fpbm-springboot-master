@@ -1,9 +1,9 @@
 package ma.fpbm.fpbmback.beans;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Column;
@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Data
@@ -20,7 +19,7 @@ import java.util.Objects;
 public class CoursTdTp {
     @Id
     @Column(name = "id_courstptp")
-    private int id;
+    private Long id;
 
 
     // reference set à la comparaison

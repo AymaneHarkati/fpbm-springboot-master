@@ -1,7 +1,11 @@
 package ma.fpbm.fpbmback.service.imple;
 
+import ma.fpbm.fpbmback.beans.Extern;
+import ma.fpbm.fpbmback.beans.LieuDeTravail;
 import ma.fpbm.fpbmback.beans.Professeur;
 
+import ma.fpbm.fpbmback.repository.ExternRepository;
+import ma.fpbm.fpbmback.repository.LieuTravailRepository;
 import ma.fpbm.fpbmback.repository.ProfesseurRepository;
 
 import ma.fpbm.fpbmback.service.facade.ProfesseurService;
@@ -18,7 +22,10 @@ import java.util.Optional;
 public class ProfesseurServiceImple implements ProfesseurService {
     @Autowired
     private ProfesseurRepository professeurRepository;
-
+    @Autowired
+    private LieuTravailRepository lieuTravailRepository;
+    @Autowired
+    private ExternRepository externRepository;
     @Override
     public Page<Professeur> findAll(int pageNo, int pageSize) {
         Pageable paging = PageRequest.of(pageNo, pageSize);
@@ -35,9 +42,13 @@ public class ProfesseurServiceImple implements ProfesseurService {
         return professeurRepository.findById(id);
     }
 
-    public Professeur save(Professeur ced) {
+    public Professeur save(Professeur prof) {
         // validate the input data :
-        return professeurRepository.save(ced);
+        if(foreignExtern(prof).isEmpty() || foreignLieuDeTravail(prof).isEmpty()){
+            System.out.println("Id of lieuTravail or Extern not found");
+            return null;
+        }
+        return professeurRepository.save(prof);
     }
 
     @Override
@@ -47,7 +58,18 @@ public class ProfesseurServiceImple implements ProfesseurService {
     }
 
     @Override
-    public Professeur update(Professeur annee) {
-        return professeurRepository.save(annee);
+    public Professeur update(Professeur prof) {
+        if(foreignExtern(prof).isEmpty() || foreignLieuDeTravail(prof).isEmpty()){
+            System.out.println("Id of lieuTravail or Extern not found");
+            return null;
+        }
+        return professeurRepository.save(prof);
+    }
+
+    private Optional<LieuDeTravail> foreignLieuDeTravail(Professeur professeur) {
+        return this.lieuTravailRepository.findById(professeur.getIdLieuTravail().getId());
+    }
+    private Optional<Extern> foreignExtern(Professeur professeur) {
+        return this.externRepository.findById(professeur.getId_extern().getId());
     }
 }
