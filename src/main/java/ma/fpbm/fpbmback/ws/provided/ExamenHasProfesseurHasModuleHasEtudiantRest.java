@@ -1,8 +1,6 @@
 package ma.fpbm.fpbmback.ws.provided;
 
-import ma.fpbm.fpbmback.beans.Examen;
 import ma.fpbm.fpbmback.beans.ExamenHasProfesseurHasModuleHasEtudiant;
-import ma.fpbm.fpbmback.beans.ProfesseurHasModule;
 import ma.fpbm.fpbmback.service.imple.ExamenHasProfesseurHasModuleHasEtudiantImple;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -52,7 +50,6 @@ public class ExamenHasProfesseurHasModuleHasEtudiantRest {
 
     @GetMapping("/count/{idExamen}")
     public int countEffectif(@PathVariable int idExamen){
-        int count = examenHasProfesseurHasModuleHasEtudiantImple.countEffectif(idExamen);
-        return count;
+        return examenHasProfesseurHasModuleHasEtudiantImple.countEffectif(idExamen);
     }
 }
