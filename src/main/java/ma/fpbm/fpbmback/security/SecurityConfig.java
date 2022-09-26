@@ -1,3 +1,4 @@
+
 package ma.fpbm.fpbmback.security;
 
 import ma.fpbm.fpbmback.security.Beans.AppUser;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Configuration
+@EnableWebSecurity
+/*
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private AccountService accountService;
@@ -54,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and().csrf().disable();
         //http.headers().frameOptions().disable();
         http.authorizeRequests().antMatchers("/refreshToken/**").permitAll();
-        //http.authorizeRequests().antMatchers(HttpMethod.DELETE,"/**").hasAuthority("ADMIN");
+        //http.authorizeRequests().antMatchers(HttpMethod.GET,"/**").hasAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
         http.addFilterBefore(new JwtAuthorizationFiler(), UsernamePasswordAuthenticationFilter.class);
@@ -63,5 +66,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+}
+*/
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    public  SecurityConfig() {
+        super(true); // Disable defaults
+    }
+    @Override
+    protected void configure(HttpSecurity http) {
+        // Do nothing, this is just overriding the default behavior in WebSecurityConfigurerAdapter
+
     }
 }

@@ -52,8 +52,6 @@ public class GeneratePV{
 
         cell.setPhrase(new Phrase("Singnature", font));
         table.addCell(cell);
-
-
     }
     private void writeTableDataEmptyForSurv(PdfPTable table) {
         for (int i=0;i<5;i++) {

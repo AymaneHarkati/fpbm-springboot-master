@@ -1,7 +1,6 @@
 package ma.fpbm.fpbmback.ws.provided;
 
 
-import ma.fpbm.fpbmback.beans.ProfesseurHasModule;
 import ma.fpbm.fpbmback.beans.ProfesseurHasModuleHasEtudiant;
 import ma.fpbm.fpbmback.service.imple.ProfesseurModuleEtudiantServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

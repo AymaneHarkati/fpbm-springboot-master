@@ -29,7 +29,7 @@ public class Examen {
     @ManyToOne
     private Salle salle;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private ProfesseurHasModule profHasModule;
 
     @OneToMany(mappedBy = "id_examen")
