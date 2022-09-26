@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping
+
 public class AccountRestController {
     private AccountService accountService;
 

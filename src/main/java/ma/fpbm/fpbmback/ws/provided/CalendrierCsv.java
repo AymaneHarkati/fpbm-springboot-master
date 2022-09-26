@@ -5,10 +5,12 @@ import ma.fpbm.fpbmback.beans.ProfesseurHasModuleHasEtudiant;
 import ma.fpbm.fpbmback.service.imple.ExamenServiceImple;
 import ma.fpbm.fpbmback.service.imple.ProfesseurModuleEtudiantServiceImpl;
 import ma.fpbm.fpbmback.toExcel.ExcelExportCalendar;
+import ma.fpbm.fpbmback.toExcel.ExcelExportEtdModWtFillndSem;
 import ma.fpbm.fpbmback.toExcel.ExcelExportEtudModule;
 import ma.fpbm.fpbmback.toExcel.ExcelExportModuleWithEffectif;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
@@ -56,6 +58,17 @@ public class CalendrierCsv {
         //send to excelImpl class
         mav1.addObject("listModule",listModule);
         mav1.addObject("module",module);
+        return mav1;
+    }
+
+    @GetMapping("/excelExportModSemestre/{filliere}/{semestre}")
+    public ModelAndView exportToExcelModuleWithSemestre(@PathVariable String semestre , @PathVariable String filliere) {
+        ModelAndView mav1 = new ModelAndView();
+        mav1.setView(new ExcelExportEtdModWtFillndSem(filliere,semestre));
+        //read data from DB
+        List<ProfesseurHasModuleHasEtudiant> listModule = professeurModuleEtudiantService.getAll();
+        //send to excelImpl class
+        mav1.addObject("listModule",listModule);
         return mav1;
     }
 
